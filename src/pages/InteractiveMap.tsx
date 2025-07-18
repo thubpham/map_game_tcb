@@ -2,10 +2,11 @@
 
 import { useState, useMemo } from 'react';
 import MapContainer from '../components/map/MapContainer';
-import { MOCK_POIs, MOCK_CHALLENGES } from '../data/mock';
+import { MOCK_POIs, MOCK_CHALLENGES, MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
 import type { PointOfInterest } from '../types'; // Using 'import type' for type-only import
 import { useGeolocation } from '../hook/useGeolocation'; // Corrected: Path changed from 'hook' to 'hooks'
 import ChallengeSection from '../components/map/ChallengeSection';
+import FriendActivityFeed from '../components/map/FriendActivityFeed';
 
 // Defining Category type for clarity, derived from PointOfInterest
 type Category = PointOfInterest['category'];
@@ -61,6 +62,9 @@ const InteractiveMap = () => {
   return (
     // The entire component's JSX is wrapped in a single parent div
     <div>
+      {/* UPDATED: Using the horizontal FriendActivityFeed component */}
+      <FriendActivityFeed friends={MOCK_FRIENDS_WITH_ACTIVITY} />
+
       {/* The main Challenge Section, which handles category selection and challenge carousel */}
       <ChallengeSection
           challenges={MOCK_CHALLENGES}

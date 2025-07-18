@@ -52,3 +52,26 @@ export interface User {
     description: string;
     imageUrl: string;
   }
+
+  // New interfaces for "Connect with your friends!" feature
+  export interface Friend {
+    id: string;
+    name: string;
+    avatarUrl: string;
+    totalPoints: number;
+    recentCompletions: {
+        type: 'challenge' | 'poi';
+        name: string;
+    }[];
+  };
+
+  // export type FriendActivityType = 'challenge_completed' | 'weekly_summary';
+
+  // export type FriendActivity = {
+  //   id: string;
+  //   friendId: string;
+  //   timestamp: string;
+  // } & (
+  //     | { type: 'challenge_completed'; targetId: string; }
+  //     | { type: 'weekly_summary'; targetIds: string[]; }
+  // );

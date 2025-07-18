@@ -42,27 +42,36 @@ A well-organized project structure is the foundation for a scalable application.
 
 Generated code
 src/
-|-- assets/              # Static assets like images, fonts
+|-- assets/                         # Static assets like images, fonts
 |   |-- images/
-|-- components/          # Reusable UI components
-|   |-- common/          # Buttons, Cards, Modals, etc.
-|   |-- layout/          # Header, Sidebar, PageWrapper, etc.
-|   |-- dashboard/       # Components specific to the Dashboard screen
-|   |-- map/             # Components specific to the Map screen
-|-- data/                # Mock data for development
+|-- components/                     # Reusable UI components
+|   |-- common/                     # Buttons, Cards, Modals, etc.
+|   |-- layout/                     # Header, Sidebar, PageWrapper, etc.
+|   |-- dashboard/                  # Components specific to the Dashboard screen
+|   |-- map/                        # Components specific to the Map screen
+|       |-- ChallengeCard
+|       |-- ChallengeCarousel
+|       |-- ChallengeSection
+|       |-- MapContainer
+|       |-- MapControls
+|       |-- PoinOfInterestMarkers
+|       |-- StoreDetailsPopup
+|-- data/                           # Mock data for development
 |   |-- mock.ts
-|-- hooks/               # Custom React hooks
-|-- pages/               # Screen-level components
+|-- hooks/                          # Custom React hooks
+|-- pages/                          # Screen-level components
 |   |-- Dashboard.tsx
 |   |-- InteractiveMap.tsx
-|-- services/            # API calls (even if mocked initially)
-|-- styles/              # Global styles and Tailwind configuration
+|-- services/                       # API calls (even if mocked initially)
+|-- styles/                         # Global styles and Tailwind configuration
 |   |-- tailwind.css
-|-- types/               # TypeScript type definitions
+|-- types/                          # TypeScript type definitions
 |   |-- index.ts
-|-- App.tsx              # Main application component with routing
-|-- main.tsx             # Entry point of the application
+|-- App.tsx                         # Main application component with routing
+|-- main.tsx                        # Entry point of the application
+
 Use code with caution.
+
 4. Screen Implementation Plan
 Screen 1: Dashboard
 This screen provides users with an at-a-glance view of their progress and rewards.
@@ -536,15 +545,8 @@ export default StoreDetailsPopup;
 
 # Based on my codebase, could you please enhance the map with features
 
-# Logic: 
-- Tier 1: Pick category => Think of this not as a Search function but a Filter function
-  + Default to displaying all stores 
-  + If a specific category is picked => Only display stores within that category 
-  + Can pick more than one category at the same time (Eg: Food and Drink) => Should show stores in both Food and Drink
-  + Can click on a selected category to dis-select => Do not display that category anymore
-  + Have a clear category setting button to clear all category => If all categories are dis-selected, display all stores (basically go back to default mode)
-- Tier 2: Pick challenge
-  + Must pick category first in order to pick challenge (You can add instructional sentences for this)
-  + Can only display one challenge at a time
-  + Can click on the challenge image in the carousel to dis-select the challenge
-- When switching between categories, challenges should be switched respectively as well
+Context: I want to add another feature - "Connect with your friends!"
+Feature explanation: 
+- You can follow your friends on our product and see what challenges they have completed / what stores they have finished
+- It should appear as a carousel at the top of the Interactive Map
+- You can sample social media apps like Instagram, Beli, or BeReal to see how they are designing the challenges to be interactive, social, and fun.  

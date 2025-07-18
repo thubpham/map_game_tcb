@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+  Add this custom utility to hide scrollbars.
+  It targets different browser engines.
+*/
+@layer utilities {
+    .scrollbar-hide {
+      /* For IE and Edge */
+      -ms-overflow-style: none;
+  
+      /* For Firefox */
+      scrollbar-width: none;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      /* For Chrome, Safari, and Opera */
+      display: none;
+    }
+};
