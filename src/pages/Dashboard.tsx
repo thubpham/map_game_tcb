@@ -6,6 +6,7 @@ import RewardScheme from '../components/dashboard/RewardScheme';
 import SuggestionCarousel from '../components/dashboard/SuggestionCarousel';
 import Promotions from '../components/dashboard/Promotions';
 import RecentActivity from '../components/dashboard/RecentActivity';
+
 import { MOCK_USER, MOCK_SUGGESTIONS, MOCK_PROMOTIONS, MOCK_REWARD_TIERS, MOCK_ACTIVITIES } from '../data/mock';
 
 const Dashboard = () => {

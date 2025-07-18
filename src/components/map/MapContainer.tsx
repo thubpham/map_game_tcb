@@ -1,7 +1,7 @@
 // src/components/map/MapContainer.tsx
 import { MapContainer as LeafletMap, TileLayer, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { PointOfInterest } from '../../types';
+import type { PointOfInterest } from '../../types';
 import PointOfInterestMarker from './PointOfInterestMarker';
 
 // Component to handle map view changes

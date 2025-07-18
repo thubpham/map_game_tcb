@@ -1,7 +1,7 @@
 // src/components/map/StoreDetailsPopup.tsx
 
 import { Popup } from 'react-leaflet';
-import { PointOfInterest } from '../../types';
+import type { PointOfInterest } from '../../types';
 
 interface StoreDetailsPopupProps {
   poi: PointOfInterest;

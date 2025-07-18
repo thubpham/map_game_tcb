@@ -15,7 +15,7 @@ const Header = () => {
           {/* Logo/Brand Name */}
           <div className="flex-shrink-0">
             <NavLink to="/" className="text-2xl font-bold text-indigo-600">
-              Techcombank Loyalty Journey
+              Techcombank Loyalty
             </NavLink>
           </div>
 

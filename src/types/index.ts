@@ -43,3 +43,12 @@ export interface User {
     points: number;
     date: string;
   }
+
+  export interface Challenge {
+    id: string;
+    name: string;
+    category: 'Food' | 'Drink' | 'Service';
+    poiIds: string[]; // IDs of POIs included in this challenge
+    description: string;
+    imageUrl: string;
+  }

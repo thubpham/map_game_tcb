@@ -570,12 +570,17 @@ const StoreDetailsPopup = ({ poi }: StoreDetailsPopupProps) => {
 
 export default StoreDetailsPopup;
 
-# based on my codebase, could you please enhance the map with features
-I want the filter on the map to have 2 layer
-first, select food / drink / service (like now)
-after select, a carousel will show up, to let user select the challange based on the theme	
-(ramen week, matcha weekend, etc..)
+# Based on my codebase, could you please enhance the map with features
 
-after select, the related place will pop up on the map following the theme (would need to mock more data)
-also, make the UI UX more beautiful, more professional
-you can add more feature to let the product shine
+# Logic: 
+- Tier 1: Pick category => Think of this not as a Search function but a Filter function
+  + Default to displaying all stores 
+  + If a specific category is picked => Only display stores within that category 
+  + Can pick more than one category at the same time (Eg: Food and Drink) => Should show stores in both Food and Drink
+  + Can click on a selected category to dis-select => Do not display that category anymore
+  + Have a clear category setting button to clear all category => If all categories are dis-selected, display all stores (basically go back to default mode)
+- Tier 2: Pick challenge
+  + Must pick category first in order to pick challenge (You can add instructional sentences for this)
+  + Can only display one challenge at a time
+  + Can click on the challenge image in the carousel to dis-select the challenge
+- When switching between categories, challenges should be switched respectively as well
