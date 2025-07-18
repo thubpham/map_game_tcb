@@ -40,23 +40,23 @@ const InteractiveMap = () => {
     setSelectedChallengeId(prev => (prev === challengeId ? null : challengeId));
   };
 
-  // Memoized computation of points of interest to display on the map
   const filteredPOIs = useMemo(() => {
-    if (selectedChallengeId) {
-      // Tier 1: Specific challenge is selected
-      const challenge = MOCK_CHALLENGES.find(c => c.id === selectedChallengeId);
-      if (challenge) {
-        return MOCK_POIs.filter(poi => challenge.poiIds.includes(poi.id));
-      }
-      return [] // Challenge not found or empty 
-    } else if (selectedChallengeCategory) {
-      // Tier 2: No challenge selected but category selected
-      return MOCK_POIs.filter(poi => poi.category === selectedChallengeCategory);
-    } else {
-      // Tier 3: Nothing selected - default to showing all POIs
-      return MOCK_POIs;
-    }
-  }, [selectedChallengeId, setSelectedChallengeCategory]);
+
+    // Define a state that will track what type of conditions are being applied
+    let currentPOIs = MOCK_POIs
+
+    // Tier 1: Filter by categories
+    if (selectedChallengeCategory) {
+      currentPOIs = currentPOIs.filter(poi => poi.category === selectedChallengeCategory); // Retrieve pois in that category only
+      if (selectedChallengeId) { // If a challenge is also detected
+        const challenge = MOCK_CHALLENGES.find(c => c.id === selectedChallengeId);
+        if (challenge) {
+          currentPOIs = currentPOIs.filter(poi => challenge.poiIds.includes(poi.id)); // Retrieve pois in that challenge from a list of filtered pois 
+        } // If no challenge is detected, return the list of pois filtered by category 
+      } 
+    } 
+    return currentPOIs // If no category detected, return a full list of pois
+  }, [selectedChallengeId, selectedChallengeCategory]);
 
   return (
     // The entire component's JSX is wrapped in a single parent div
