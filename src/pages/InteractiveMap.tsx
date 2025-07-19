@@ -3,27 +3,21 @@
 import { useState, useMemo } from 'react';
 import MapContainer from '../components/map/MapContainer';
 import { MOCK_POIs, MOCK_CHALLENGES, MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
-import type { PointOfInterest } from '../types'; // Using 'import type' for type-only import
-import { useGeolocation } from '../hook/useGeolocation'; // Corrected: Path changed from 'hook' to 'hooks'
+import type { PointOfInterest } from '../types'; 
+import { useGeolocation } from '../hook/useGeolocation'; 
 import ChallengeSection from '../components/map/ChallengeSection';
 import FriendActivityFeed from '../components/map/FriendActivityFeed';
 
-// Defining Category type for clarity, derived from PointOfInterest
 type Category = PointOfInterest['category'];
 
 const InteractiveMap = () => {
-  // State for the map's center coordinates
   const [mapCenter, setMapCenter] = useState<[number, number]>([51.505, -0.09]); // Default center
 
-  // Geolocation hook for getting user's current position
   const { isLoading, position, getPosition } = useGeolocation();
 
-  // States for managing challenge selection
   const [selectedChallengeCategory, setSelectedChallengeCategory] = useState<Category | null>(null);
   const [selectedChallengeId, setSelectedChallengeId] = useState<string | null>(null);
 
-  // Effect to update map center when geolocation position changes
-  // This runs on initial load if position is available, and whenever getPosition is called
   if (position && (mapCenter[0] !== position[0] || mapCenter[1] !== position[1])) {
       setMapCenter(position);
   }

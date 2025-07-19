@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import type { User, Friend } from '../../types';
 import Card from '../common/Card';
 import { Trophy, Medal, Award } from 'lucide-react';
@@ -7,9 +6,10 @@ import { Trophy, Medal, Award } from 'lucide-react';
 interface LeaderboardProps {
   currentUser: User;
   friends: Friend[];
+  onSelectFriend: (friendId: string) => void;
 }
 
-const Leaderboard = ({ currentUser, friends }: LeaderboardProps) => {
+const Leaderboard = ({ currentUser, friends, onSelectFriend }: LeaderboardProps) => {
   const rankedList = useMemo(() => {
     const combined = [
       {
@@ -38,12 +38,15 @@ const Leaderboard = ({ currentUser, friends }: LeaderboardProps) => {
           const rank = index + 1;
           return (
             <li key={player.id}>
-              <Link to={isCurrentUser ? '/' : `/friend/${player.id}`} className={`flex items-center p-3 rounded-lg transition-all ${isCurrentUser ? 'bg-indigo-100 border-2 border-indigo-300' : 'bg-gray-50 hover:bg-gray-100'}`}>
+              <div
+                onClick={() => !isCurrentUser && onSelectFriend(player.id)}
+                className={`flex items-center p-3 rounded-lg transition-all cursor-pointer ${isCurrentUser ? 'bg-indigo-100 border-2 border-indigo-300' : 'bg-gray-50 hover:bg-gray-100'}`}
+              >
                 <span className="text-lg font-bold text-gray-500 w-8">{rank <= 3 ? rankIcons[index] : rank}</span>
                 <img src={player.avatarUrl} alt={player.name} className="w-10 h-10 rounded-full mx-3" />
                 <span className="font-semibold text-gray-800 flex-grow">{player.name} {isCurrentUser && '(You)'}</span>
                 <span className="font-bold text-indigo-600">{player.totalPoints.toLocaleString()} pts</span>
-              </Link>
+              </div>
             </li>
           );
         })}

@@ -1,20 +1,19 @@
-import { useParams } from 'react-router-dom';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
-import { ArrowLeft, Award, Trophy, MapPin } from 'lucide-react';
+import { Award, Trophy, MapPin } from 'lucide-react';
 import Card from '../components/common/Card';
-import { Link } from 'react-router-dom';
 
-const FriendProfile = () => {
-  const { friendId } = useParams<{ friendId: string }>();
+interface FriendProfileProps {
+  friendId: string;
+}
+
+const FriendProfile = ({ friendId }: FriendProfileProps) => {
   const friend = MOCK_FRIENDS_WITH_ACTIVITY.find(f => f.id === friendId);
 
   if (!friend) {
     return (
       <div className="text-center py-10">
         <h2 className="text-2xl font-bold text-gray-700">Friend not found.</h2>
-        <Link to="/" className="text-indigo-600 hover:underline mt-4 inline-block">
-          Back to Dashboard
-        </Link>
+        <p className="text-gray-500 mt-4">Please select a valid friend.</p>
       </div>
     );
   }
@@ -26,10 +25,6 @@ const FriendProfile = () => {
 
   return (
     <div className="space-y-6">
-       <Link to="/" className="flex items-center text-gray-600 hover:text-indigo-600 font-semibold transition-colors">
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Dashboard
-        </Link>
       {/* Profile Header */}
       <div className="flex items-center space-x-6 p-6 bg-white rounded-xl shadow-lg border border-gray-200/80">
         <img
