@@ -28,8 +28,7 @@ Our goal is to encourage real-world exploration and engagement by making it a re
 *   **📈 Progress & Leveling System:** Track your journey, earn experience, and level up to unlock greater rewards and status.
 
 ## 🖼️ Screenshots / Demo
-<img src="src/assets/images/gh-demo1.png" width="160">
-<img src="src/assets/images/gh-demo2.png" width="180">
+<img src="src/assets/images/gh-demo1.png" width="300"> <img src="src/assets/images/gh-demo2.png" width="320">
 
 ## 🛠️ Tech Stack
 
