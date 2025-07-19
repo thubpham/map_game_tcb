@@ -11,7 +11,12 @@ import Leaderboard from '../components/dashboard/Leaderboard';
 import Slideover from '../components/common/Slideover';
 import FriendProfile from './FriendProfile';
 
-import { MOCK_USER, MOCK_CHALLENGES, MOCK_PROMOTIONS, MOCK_REWARD_TIERS, MOCK_ACTIVITIES, MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
+import { MOCK_USER } from '../data/user';
+import { MOCK_CHALLENGES } from '../data/challenges';
+import { MOCK_PROMOTIONS } from '../data/promotions';
+import { MOCK_REWARD_TIERS } from '../data/rewardTiers';
+import { MOCK_ACTIVITIES } from '../data/activities';
+import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 
 const Dashboard = () => {
   const [isSlideoverOpen, setIsSlideoverOpen] = useState(false);

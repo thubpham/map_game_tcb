@@ -2,7 +2,9 @@
 
 import { useState, useMemo } from 'react';
 import MapContainer from '../components/map/MapContainer';
-import { MOCK_POIs, MOCK_CHALLENGES, MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
+import { MOCK_POIs } from '../data/pois';
+import { MOCK_CHALLENGES } from '../data/challenges';
+import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import type { PointOfInterest } from '../types'; 
 import { useGeolocation } from '../hook/useGeolocation'; 
 import ChallengeSection from '../components/map/ChallengeSection';

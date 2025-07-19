@@ -1,4 +1,4 @@
-import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
+import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import { Award, Trophy, MapPin } from 'lucide-react';
 import Card from '../components/common/Card';
 
