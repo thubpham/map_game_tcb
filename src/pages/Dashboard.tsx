@@ -11,6 +11,8 @@ import WhatToEatToday from '../components/dashboard/WhatToEatToday';
 import Slideover from '../components/common/Slideover';
 import FriendProfile from './FriendProfile';
 import StoreDetailSlideoverContent from '../components/map/StoreDetailSlideoverContent';
+import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
+import DietarySuggestion from '../components/dashboard/DietarySuggestion';
 import type { PointOfInterest } from '../types';
 
 import { MOCK_USER } from '../data/user';
@@ -18,6 +20,7 @@ import { MOCK_CHALLENGES } from '../data/challenges';
 import { MOCK_PROMOTIONS } from '../data/promotions';
 import { MOCK_ACTIVITIES } from '../data/activities';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
+import { MOCK_FOOD_JOURNAL_METRICS } from '../data/foodJournalMetrics';
 
 const Dashboard = () => {
   const [isFriendSlideoverOpen, setIsFriendSlideoverOpen] = useState(false);
@@ -58,11 +61,13 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 space-y-8">
             <WhatToEatToday onSelectPoi={handleSelectPoi} />
-            <Promotions promotions={MOCK_PROMOTIONS} />
-            <RecentActivity activities={MOCK_ACTIVITIES} />
+            <FlavorProfileChart metrics={MOCK_FOOD_JOURNAL_METRICS} />
+            <DietarySuggestion />
         </div>
         <div className="lg:col-span-1 space-y-8">
             <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} onSelectFriend={handleSelectFriend} />
+            <Promotions promotions={MOCK_PROMOTIONS} />
+            <RecentActivity activities={MOCK_ACTIVITIES} />
         </div>
       </div>
 
