@@ -14,9 +14,10 @@ const MapUpdater = ({ center }: { center: [number, number] }) => {
 interface MapContainerProps {
   pointsOfInterest: PointOfInterest[];
   center: [number, number];
+  selectedChallengeId: string | null;
 }
 
-const MapContainer = ({ pointsOfInterest, center }: MapContainerProps) => {
+const MapContainer = ({ pointsOfInterest, center, selectedChallengeId }: MapContainerProps) => {
   return (
     <LeafletMap center={center} zoom={13} style={{ height: '100%', width: '100%' }}>
       <MapUpdater center={center} />
@@ -25,7 +26,7 @@ const MapContainer = ({ pointsOfInterest, center }: MapContainerProps) => {
         attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>'
       />
       {pointsOfInterest.map(poi => (
-        <PointOfInterestMarker key={poi.id} poi={poi} />
+        <PointOfInterestMarker key={poi.id} poi={poi} selectedChallengeId={selectedChallengeId} />
       ))}
     </LeafletMap>
   );

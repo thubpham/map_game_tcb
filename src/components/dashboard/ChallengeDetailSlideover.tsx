@@ -1,6 +1,8 @@
 import type { Challenge, PointOfInterest } from '../../types';
 import { MapPin, Star, Award } from 'lucide-react';
 import React from 'react'; // Import React if not already present in the original file
+import { useNavigate } from 'react-router-dom';
+import { useChallengeStore } from '../../store/challengeStore';
 
 // Helper to render stars for difficulty
 const DifficultyStars = ({ difficulty }: { difficulty: 'easy' | 'medium' | 'hard' }) => {
@@ -23,6 +25,9 @@ interface ChallengeDetailSlideoverProps {
 }
 
 const ChallengeDetailSlideover: React.FC<ChallengeDetailSlideoverProps> = ({ challenge }) => {
+  const navigate = useNavigate();
+  const { setActiveChallenge } = useChallengeStore();
+
   const mockChallenge = {
     ...challenge,
     points: challenge.points || 500, // Example default
@@ -60,7 +65,13 @@ const ChallengeDetailSlideover: React.FC<ChallengeDetailSlideoverProps> = ({ cha
         </div>
       )}
 
-      <button className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-colors duration-200">
+      <button
+        className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-colors duration-200"
+        onClick={() => {
+          setActiveChallenge(mockChallenge.id);
+          navigate('/map');
+        }}
+      >
         Start Challenge
       </button>
     </div>
