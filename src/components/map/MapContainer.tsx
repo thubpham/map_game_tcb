@@ -1,8 +1,8 @@
 // src/components/map/MapContainer.tsx
 import { MapContainer as LeafletMap, TileLayer, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import type { PointOfInterest } from '../../types';
 import PointOfInterestMarker from './PointOfInterestMarker';
+import type { PointOfInterest } from '../../types';
 
 // Component to handle map view changes
 const MapUpdater = ({ center }: { center: [number, number] }) => {
@@ -12,11 +12,12 @@ const MapUpdater = ({ center }: { center: [number, number] }) => {
 }
 
 interface MapContainerProps {
-  pointsOfInterest: PointOfInterest[];
   center: [number, number];
+  pointsOfInterest: PointOfInterest[];
+  selectedChallengeId: string | null;
 }
 
-const MapContainer = ({ pointsOfInterest, center }: MapContainerProps) => {
+const MapContainer = ({ center, pointsOfInterest, selectedChallengeId }: MapContainerProps) => {
   return (
     <LeafletMap center={center} zoom={13} style={{ height: '100%', width: '100%' }}>
       <MapUpdater center={center} />
@@ -25,7 +26,7 @@ const MapContainer = ({ pointsOfInterest, center }: MapContainerProps) => {
         attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>'
       />
       {pointsOfInterest.map(poi => (
-        <PointOfInterestMarker key={poi.id} poi={poi} />
+        <PointOfInterestMarker key={poi.id} poi={poi} selectedChallengeId={selectedChallengeId} />
       ))}
     </LeafletMap>
   );

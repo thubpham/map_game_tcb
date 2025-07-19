@@ -40,7 +40,7 @@ const ChallengeSection = ({
     <div className="bg-white p-6 rounded-xl shadow-lg mt-8">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-gray-800">Active Challenges</h2>
-        <div className="flex items-center gap-2"> {/* Container for utility buttons */}
+        <div className="flex items-center gap-2"> 
             {/* "Clear Challenge" button appears only when a specific challenge is selected */}
             {selectedChallengeId && (
             <button
@@ -51,7 +51,6 @@ const ChallengeSection = ({
             </button>
             )}
 
-            {/* "Center Map" button, now inside the challenge box */}
             <button 
                 onClick={onCenterMeClick}
                 disabled={isLocating}
@@ -81,7 +80,7 @@ const ChallengeSection = ({
             `}
           >
             {categoryIcons[category]}
-            {category} Challenges
+            {category}
           </button>
         ))}
       </div>
@@ -89,9 +88,6 @@ const ChallengeSection = ({
       {/* Layer 2: Challenge Carousel - conditionally rendered based on category selection */}
       {selectedChallengeCategory && (
         <div className="mt-6">
-          <h3 className="text-xl font-semibold text-gray-700 mb-4">
-            {selectedChallengeCategory} Challenges
-          </h3>
           <ChallengeCarousel
             challenges={filteredChallenges} // Only show challenges for the selected category
             selectedChallengeId={selectedChallengeId}
@@ -102,7 +98,7 @@ const ChallengeSection = ({
       {/* Message displayed when no challenge category is selected */}
       {!selectedChallengeCategory && (
         <div className="text-center text-gray-500 py-8 border border-dashed border-gray-300 rounded-lg">
-          Select a category above to browse challenges.
+          Select a category for challenges.
         </div>
       )}
     </div>
