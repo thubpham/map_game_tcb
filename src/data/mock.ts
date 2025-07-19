@@ -3,6 +3,7 @@
 import type { User, PointOfInterest, Suggestion, Promotion, RewardTier, Activity, Challenge, Friend} from '../types';
 
 export const MOCK_USER: User = {
+  id: 'user-john-doe',
   name: 'John Doe',
   points: 1250,
   currentTier: 'Silver',

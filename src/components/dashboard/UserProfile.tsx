@@ -1,4 +1,4 @@
-import { User } from '../../types';
+import type { User } from '../../types';
 import { Award } from 'lucide-react';
 
 interface UserProfileProps {
@@ -7,11 +7,20 @@ interface UserProfileProps {
 
 const UserProfile = ({ user }: UserProfileProps) => {
   return (
-    <div className="text-center">
-      <h1 className="text-4xl font-bold text-gray-800">Welcome, {user.name}!</h1>
-      <div className="mt-4 flex items-center justify-center space-x-2 text-2xl text-amber-500">
-        <Award className="w-8 h-8" />
-        <span className="font-semibold">{user.points.toLocaleString()} Points</span>
+    <div className="flex items-center space-x-6">
+      <div className="relative">
+        <img
+          className="w-24 h-24 rounded-full border-4 border-white shadow-md"
+          src={`https://i.pravatar.cc/150?u=${user.name}`} // Using a placeholder for avatar
+          alt={user.name}
+        />
+        <div className="absolute -bottom-2 -right-2 bg-indigo-600 rounded-full p-2 text-white">
+          <Award className="w-5 h-5" />
+        </div>
+      </div>
+      <div>
+        <h1 className="text-4xl font-bold text-gray-800">Welcome back, {user.name}!</h1>
+        <p className="text-xl text-gray-500 mt-1">You're a <span className="font-semibold text-indigo-600">{user.currentTier}</span> member.</p>
       </div>
     </div>
   );

@@ -6,8 +6,9 @@ import RewardScheme from '../components/dashboard/RewardScheme';
 import SuggestionCarousel from '../components/dashboard/SuggestionCarousel';
 import Promotions from '../components/dashboard/Promotions';
 import RecentActivity from '../components/dashboard/RecentActivity';
+import Leaderboard from '../components/dashboard/Leaderboard';
 
-import { MOCK_USER, MOCK_SUGGESTIONS, MOCK_PROMOTIONS, MOCK_REWARD_TIERS, MOCK_ACTIVITIES } from '../data/mock';
+import { MOCK_USER, MOCK_SUGGESTIONS, MOCK_PROMOTIONS, MOCK_REWARD_TIERS, MOCK_ACTIVITIES, MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
 
 const Dashboard = () => {
   return (
@@ -25,7 +26,8 @@ const Dashboard = () => {
             <Promotions promotions={MOCK_PROMOTIONS} />
             <RecentActivity activities={MOCK_ACTIVITIES} />
         </div>
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 space-y-8">
+            <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} />
             <RewardScheme tiers={MOCK_REWARD_TIERS} currentTier={MOCK_USER.currentTier} />
         </div>
       </div>

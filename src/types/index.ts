@@ -1,6 +1,7 @@
 // src/types/index.ts
 
 export interface User {
+    id:string;
     name: string;
     points: number;
     currentTier: 'Bronze' | 'Silver' | 'Gold';
