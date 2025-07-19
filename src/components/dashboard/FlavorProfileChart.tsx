@@ -1,6 +1,6 @@
 import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip, TooltipProps } from 'recharts';
-import type { FoodJournalMetrics } from '../../data/foodJournalMetrics';
+import type { FoodJournalMetrics } from '../../types';
 import { foodJournalConfig, FoodJournalMetricType } from '../../config/foodJournalConfig';
 import type { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 
@@ -72,8 +72,8 @@ const FlavorProfileChart: React.FC<FlavorProfileChartProps> = ({ metrics }) => {
   return (
     // Card styling updated for a clean, white background
     <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2 tracking-wide">Your Flavor Profile</h2>
-        <p className="text-gray-500 mb-4">A visual summary of your dining habits.</p>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2 tracking-wide">Flavor Profile</h2>
+        <p className="text-gray-500 mb-4">A visual summary of dining habits.</p>
         <div className="h-96">
             <ResponsiveContainer width="100%" height="100%">
             <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>

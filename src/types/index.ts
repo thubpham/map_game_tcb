@@ -69,17 +69,34 @@ export interface User {
     pois: PointOfInterest[]; // Array of POI objects
   }
 
-  // New interfaces for "Connect with your friends!" feature
+  export interface Review {
+    rating: number;
+    comment: string;
+  }
+  
+  export interface RestaurantVisit {
+    poiId: string;
+    date: string; // e.g., "2024-07-15"
+    review?: Review;
+  }
+  
+  export interface FoodJournalMetrics {
+    adventurous: number;
+    healthy: number;
+    happy: number;
+    exploratory: number;
+    comfort: number;
+  }
   export interface Friend {
     id: string;
     name: string;
     avatarUrl: string;
     totalPoints: number;
-    recentCompletions: {
-        type: 'challenge' | 'poi';
-        name: string;
-    }[];
-  };
+    challengesJoined: string[]; 
+    restaurantsVisited: RestaurantVisit[];
+    flavorProfile: FoodJournalMetrics; 
+    recentCompletions: { type: string; name: string }[];
+  }
 
   // export type FriendActivityType = 'challenge_completed' | 'weekly_summary';
 
