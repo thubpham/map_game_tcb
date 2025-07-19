@@ -28,9 +28,8 @@ Our goal is to encourage real-world exploration and engagement by making it a re
 *   **📈 Progress & Leveling System:** Track your journey, earn experience, and level up to unlock greater rewards and status.
 
 ## 🖼️ Screenshots / Demo
-
-![Demo 1](/src/assets/images/gh-demo1.png)
-![Demo 2](/src/assets/images/gh-demo2.png)
+<img src="src/assets/images/gh-demo1.png" width="160">
+<img src="src/assets/images/gh-demo2.png" width="180">
 
 ## 🛠️ Tech Stack
 
@@ -123,5 +122,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📧 Contact
 
-Thu Pham Bao - [your-email@example.com](mailto:your-email@example.com)
+Thu Pham Bao - [thupham@example.com](mailto:your-email@example.com)
+
 Project Link: [https://github.com/thubpham/map_game_tcb](https://github.com/thubpham/map_game_tcb)
