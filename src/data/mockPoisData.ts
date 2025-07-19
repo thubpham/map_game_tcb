@@ -1,0 +1,364 @@
+import type { PointOfInterest } from '../types';
+
+export const MOCK_POIs: PointOfInterest[] = [
+  {
+    id: 'poi-1',
+    name: 'Gourmet Burger Kitchen',
+    category: 'Food',
+    type: 'Restaurant',
+    position: [51.505, -0.09],
+    voucher: { title: '2-for-1 Burgers', description: 'Buy one burger and get the second one free.', discount: 50 },
+    reviews: [
+      { rating: 5, comment: 'Amazing burgers, highly recommend!' },
+      { rating: 4, comment: 'Great food, a bit pricey but worth it.' },
+    ],
+    pricing: 4,
+    menu: [
+      { item: 'Classic Burger', imageUrl: '/assets/images/burger.jpg' },
+      { item: 'Cheese Burger', imageUrl: '/assets/images/burger.jpg' },
+      { item: 'Veggie Burger', imageUrl: '/assets/images/burger.jpg' },
+    ],
+  },
+  {
+    id: 'poi-2',
+    name: 'The Coffee Bean',
+    category: 'Drink',
+    type: 'Cafe',
+    position: [51.51, -0.1],
+    voucher: { title: 'Free Pastry', description: 'Get a free pastry with any large coffee purchase.', discount: 100 },
+    reviews: [
+      { rating: 4, comment: 'Cozy atmosphere and good coffee.' },
+      { rating: 3, comment: 'Decent coffee, but pastries are a bit dry.' },
+    ],
+    pricing: 2,
+    menu: [
+      { item: 'Latte', imageUrl: '/assets/images/coffee.jpg' },
+      { item: 'Cappuccino', imageUrl: '/assets/images/coffee.jpg' },
+      { item: 'Espresso', imageUrl: '/assets/images/coffee.jpg' },
+    ],
+  },
+  {
+    id: 'poi-3',
+    name: 'Pizzeria Roma',
+    category: 'Food',
+    type: 'Restaurant',
+    position: [51.515, -0.08],
+    voucher: { title: '15% Off Your Bill', description: 'Enjoy a 15% discount on your total bill.', discount: 15 },
+    reviews: [
+      { rating: 5, comment: 'Best pizza in town! Authentic Italian taste.' },
+      { rating: 4, comment: 'Great pizza, fast service.' },
+    ],
+    pricing: 3,
+    menu: [
+      { item: 'Margherita Pizza', imageUrl: '/assets/images/pizza.jpg' },
+      { item: 'Pepperoni Pizza', imageUrl: '/assets/images/pizza.jpg' },
+      { item: 'Vegetable Pizza', imageUrl: '/assets/images/pizza.jpg' },
+    ],
+  },
+  {
+    id: 'poi-4',
+    name: 'City Spa & Services',
+    category: 'Service',
+    type: 'Spa',
+    position: [51.512, -0.11],
+    voucher: { title: '$20 Off Massage', description: 'Relax with a $20 discount on any 60-minute massage.', discount: 20 },
+    reviews: [
+      { rating: 5, comment: 'Very relaxing experience, professional staff.' },
+      { rating: 4, comment: 'Good service, a bit expensive but worth it for the quality.' },
+    ],
+    pricing: 5,
+    menu: [
+      { item: '60-min Swedish Massage', imageUrl: '/assets/images/spa.jpg' },
+      { item: 'Deep Tissue Massage', imageUrl: '/assets/images/spa.jpg' },
+      { item: 'Facial Treatment', imageUrl: '/assets/images/spa.jpg' },
+    ],
+  },
+  {
+    id: 'poi-5',
+    name: 'Sushi Palace',
+    category: 'Food',
+    type: 'Restaurant',
+    position: [51.508, -0.095],
+    voucher: { title: 'Free Edamame', description: 'Complimentary edamame with any sushi set.', discount: 100 },
+    reviews: [
+      { rating: 4, comment: 'Fresh sushi and good variety.' },
+      { rating: 3, comment: 'Decent sushi, but nothing extraordinary.' },
+    ],
+    pricing: 4,
+    menu: [
+      { item: 'Salmon Nigiri Set', imageUrl: '/assets/images/sushi.jpg' },
+      { item: 'California Roll', imageUrl: '/assets/images/sushi.jpg' },
+      { item: 'Sashimi Platter', imageUrl: '/assets/images/sushi.jpg' },
+    ],
+  },
+  {
+    id: 'poi-6',
+    name: 'Noodle House',
+    category: 'Food',
+    type: 'Restaurant',
+    position: [51.503, -0.085],
+    voucher: { title: '10% Off Noodles', description: '10% discount on all noodle dishes.', discount: 10 },
+    reviews: [
+      { rating: 4, comment: 'Delicious noodles, great broth.' },
+      { rating: 3, comment: 'Good value for money, but can be crowded.' },
+    ],
+    pricing: 2,
+    menu: [
+      { item: 'Ramen', imageUrl: '/assets/images/ramen.jpg' },
+      { item: 'Udon', imageUrl: '/assets/images/ramen.jpg' },
+      { item: 'Pad Thai', imageUrl: '/assets/images/ramen.jpg' },
+    ],
+  },
+  {
+    id: 'poi-7',
+    name: 'Tea Emporium',
+    category: 'Drink',
+    type: 'Cafe',
+    position: [51.513, -0.098],
+    voucher: { title: 'Buy One Get One Tea', description: 'Purchase any tea and get another free.', discount: 50 },
+    reviews: [
+      { rating: 5, comment: 'Wide selection of teas, very relaxing.' },
+      { rating: 4, comment: 'Great place for tea lovers, friendly staff.' },
+    ],
+    pricing: 2,
+    menu: [
+      { item: 'Green Tea', imageUrl: '/assets/images/tea.jpg' },
+      { item: 'Black Tea', imageUrl: '/assets/images/tea.jpg' },
+      { item: 'Herbal Infusion', imageUrl: '/assets/images/tea.jpg' },
+    ],
+  },
+  {
+    id: 'poi-8',
+    name: 'Juice Bar Express',
+    category: 'Drink',
+    type: 'Cafe',
+    position: [51.507, -0.105],
+    voucher: { title: 'Free Health Shot', description: 'A complimentary health shot with any juice order.', discount: 100 },
+    reviews: [
+      { rating: 4, comment: 'Fresh and healthy juices, quick service.' },
+      { rating: 3, comment: 'Good for a quick health boost, but a bit expensive.' },
+    ],
+    pricing: 3,
+    menu: [
+      { item: 'Orange Juice', imageUrl: '/assets/images/juice.jpg' },
+      { item: 'Green Smoothie', imageUrl: '/assets/images/juice.jpg' },
+      { item: 'Detox Shot', imageUrl: '/assets/images/juice.jpg' },
+    ],
+  },
+  {
+    id: 'poi-9',
+    name: 'Elite Hair Salon',
+    category: 'Service',
+    type: 'Salon',
+    position: [51.509, -0.082],
+    voucher: { title: '20% Off Haircut', description: 'Get a stylish haircut with 20% off.', discount: 20 },
+    reviews: [
+      { rating: 5, comment: 'Excellent haircut, very happy with the result.' },
+      { rating: 4, comment: 'Professional stylists, good atmosphere.' },
+    ],
+    pricing: 4,
+    menu: [
+      { item: 'Haircut & Style', imageUrl: '/assets/images/salon.jpg' },
+      { item: 'Coloring', imageUrl: '/assets/images/salon.jpg' },
+      { item: 'Hair Treatment', imageUrl: '/assets/images/salon.jpg' },
+    ],
+  },
+  {
+    id: 'poi-10',
+    name: 'Quick Laundry Service',
+    category: 'Service',
+    type: 'Laundry',
+    position: [51.516, -0.10],
+    voucher: { title: '$5 Off Dry Cleaning', description: 'Save $5 on your next dry cleaning order.', discount: 5 },
+    reviews: [
+      { rating: 4, comment: 'Fast and efficient laundry service.' },
+      { rating: 3, comment: 'Good for quick washes, but can be a bit expensive for larger loads.' },
+    ],
+    pricing: 2,
+    menu: [
+      { item: 'Wash & Fold', imageUrl: '/assets/images/laundry.jpg' },
+      { item: 'Dry Cleaning', imageUrl: '/assets/images/laundry.jpg' },
+      { item: 'Ironing Service', imageUrl: '/assets/images/laundry.jpg' },
+    ],
+  },
+  {
+    id: 'poi-11',
+    name: 'Phở Thìn Lò Đúc',
+    category: 'Food',
+    type: 'Restaurant',
+    position: [21.012, 105.859], // Hai Ba Trung District
+    voucher: { title: 'Free Quẩy Sticks', description: 'Get a free side of fried dough sticks with any phở bowl.', discount: 100 },
+    reviews: [
+      { rating: 5, comment: 'The best Phở in Hanoi, rich broth and tender beef.' },
+      { rating: 4, comment: 'Always crowded, but the Phở is worth the wait.' },
+    ],
+    pricing: 3,
+    menu: [
+      { item: 'Phở Bò Tái Lăn', imageUrl: '/assets/images/pho.jpg' },
+      { item: 'Phở Gà', imageUrl: '/assets/images/pho.jpg' },
+      { item: 'Quẩy (Fried Dough Sticks)', imageUrl: '/assets/images/quay.jpg' },
+    ],
+  },
+  {
+    id: 'poi-12',
+    name: 'Giảng Café (Egg Coffee)',
+    category: 'Drink',
+    type: 'Cafe',
+    position: [21.031, 105.852], // Hoan Kiem District
+    voucher: { title: '10% Off Second Cup', description: 'Enjoy a 10% discount on your second cup of delicious egg coffee.', discount: 10 },
+    reviews: [
+      { rating: 5, comment: 'A must-try in Hanoi! The egg coffee is unique and delicious.' },
+      { rating: 4, comment: 'Cozy place, great experience, but can be hard to find.' },
+    ],
+    pricing: 2,
+    menu: [
+      { item: 'Egg Coffee (Hot)', imageUrl: '/assets/images/egg_coffee.jpg' },
+      { item: 'Egg Coffee (Iced)', imageUrl: '/assets/images/egg_coffee.jpg' },
+      { item: 'Black Coffee', imageUrl: '/assets/images/coffee.jpg' },
+    ],
+  },
+  {
+    id: 'poi-13',
+    name: 'Bánh Mì 25',
+    category: 'Food',
+    type: 'Street Food',
+    position: [21.035, 105.850], // Old Quarter
+    voucher: { title: 'Free Pate Topping', description: 'Add our famous homemade pate to any Bánh Mì for free.', discount: 100 },
+    reviews: [
+      { rating: 4, comment: 'Delicious and fresh Bánh Mì, perfect for a quick bite.' },
+      { rating: 3, comment: 'Good variety, but sometimes the line is too long.' },
+    ],
+    pricing: 1,
+    menu: [
+      { item: 'Bánh Mì Đặc Biệt (Special)', imageUrl: '/assets/images/banh_mi.jpg' },
+      { item: 'Bánh Mì Gà (Chicken)', imageUrl: '/assets/images/banh_mi.jpg' },
+      { item: 'Bánh Mì Trứng (Egg)', imageUrl: '/assets/images/banh_mi.jpg' },
+    ],
+  },
+  {
+    id: 'poi-14',
+    name: 'Hanoi Social Club',
+    category: 'Drink',
+    type: 'Bar',
+    position: [21.029, 105.847], // Hoan Kiem District
+    voucher: { title: 'Live Music Discount', description: '15% off your drink order during live music nights.', discount: 15 },
+    reviews: [
+      { rating: 4, comment: 'Great ambiance, good music and drinks.' },
+      { rating: 3, comment: 'Nice place to chill, but drinks are a bit expensive.' },
+    ],
+    pricing: 4,
+    menu: [
+      { item: 'Craft Beer', imageUrl: '/assets/images/beer.jpg' },
+      { item: 'Cocktails', imageUrl: '/assets/images/cocktail.jpg' },
+      { item: 'Wine', imageUrl: '/assets/images/wine.jpg' },
+    ],
+  },
+  {
+    id: 'poi-15',
+    name: 'Cộng Cà Phê',
+    category: 'Drink',
+    type: 'Cafe',
+    position: [21.045, 105.820], // Near West Lake
+    voucher: { title: 'Free Upgrade', description: 'Upgrade your regular coffee to our famous Coconut Coffee.', discount: 100 },
+    reviews: [
+      { rating: 5, comment: 'Unique decor and delicious coconut coffee.' },
+      { rating: 4, comment: 'A bit touristy, but the coffee is good.' },
+    ],
+    pricing: 2,
+    menu: [
+      { item: 'Coconut Coffee', imageUrl: '/assets/images/coconut_coffee.jpg' },
+      { item: 'Vietnamese Iced Coffee', imageUrl: '/assets/images/vietnamese_coffee.jpg' },
+      { item: 'Smoothies', imageUrl: '/assets/images/smoothie.jpg' },
+    ],
+  },
+  {
+    id: 'poi-16',
+    name: 'Quán Ăn Ngon',
+    category: 'Food',
+    type: 'Restaurant',
+    position: [21.022, 105.841], // Phan Boi Chau Street
+    voucher: { title: 'Free Chè Dessert', description: 'Enjoy a complimentary traditional Vietnamese dessert with your meal.', discount: 100 },
+    reviews: [
+      { rating: 4, comment: 'Great place to try various Vietnamese dishes.' },
+      { rating: 3, comment: 'Food is good, but it can get very busy.' },
+    ],
+    pricing: 3,
+    menu: [
+      { item: 'Bún Chả', imageUrl: '/assets/images/bun_cha.jpg' },
+      { item: 'Nem Rán (Fried Spring Rolls)', imageUrl: '/assets/images/nem_ran.jpg' },
+      { item: 'Chè (Sweet Soup)', imageUrl: '/assets/images/che.jpg' },
+    ],
+  },
+  {
+    id: 'poi-17',
+    name: 'Bia Hơi Corner (Tạ Hiện)',
+    category: 'Drink',
+    type: 'Bar',
+    position: [21.034, 105.851], // Old Quarter
+    voucher: { title: '3rd Beer is on Us!', description: 'Buy two glasses of fresh Bia Hơi and get the third one free.', discount: 33 },
+    reviews: [
+      { rating: 4, comment: 'Lively atmosphere, cheap beer, great for people watching.' },
+      { rating: 3, comment: 'Very local experience, but not for everyone.' },
+    ],
+    pricing: 1,
+    menu: [
+      { item: 'Bia Hơi (Fresh Beer)', imageUrl: '/assets/images/bia_hoi.jpg' },
+      { item: 'Peanuts', imageUrl: '/assets/images/peanuts.jpg' },
+      { item: 'Dried Beef', imageUrl: '/assets/images/dried_beef.jpg' },
+    ],
+  },
+  {
+    id: 'poi-18',
+    name: 'Chả Cá Thăng Long',
+    category: 'Food',
+    type: 'Restaurant',
+    position: [21.030, 105.845], // Duong Thanh Street
+    voucher: { title: 'Group Discount', description: 'Get 15% off your total bill for groups of 4 or more.', discount: 15 },
+    reviews: [
+      { rating: 5, comment: 'A unique and delicious Hanoi specialty, a must-try!' },
+      { rating: 4, comment: 'Great experience, but the restaurant can be a bit noisy.' },
+    ],
+    pricing: 4,
+    menu: [
+      { item: 'Chả Cá Lã Vọng', imageUrl: '/assets/images/cha_ca.jpg' },
+      { item: 'Bún (Vermicelli Noodles)', imageUrl: '/assets/images/bun.jpg' },
+      { item: 'Rau Thì Là (Dill)', imageUrl: '/assets/images/dill.jpg' },
+    ],
+  },
+  {
+    id: 'poi-19',
+    name: 'Áo Dài Thanh Liem Tailors',
+    category: 'Service',
+    type: 'Tailor',
+    position: [21.032, 105.849], // Hang Gai Street (Silk Street)
+    voucher: { title: '20% Off Custom Tailoring', description: 'Get a 20% discount on any custom-made Áo Dài.', discount: 20 },
+    reviews: [
+      { rating: 5, comment: 'High-quality tailoring, beautiful Áo Dài.' },
+      { rating: 4, comment: 'Good service, but takes a few days to complete.' },
+    ],
+    pricing: 5,
+    menu: [
+      { item: 'Custom Áo Dài', imageUrl: '/assets/images/ao_dai.jpg' },
+      { item: 'Silk Scarves', imageUrl: '/assets/images/silk_scarf.jpg' },
+      { item: 'Tailoring Services', imageUrl: '/assets/images/tailoring.jpg' },
+    ],
+  },
+  {
+    id: 'poi-20',
+    name: 'La Siesta Spa',
+    category: 'Service',
+    type: 'Spa',
+    position: [21.036, 105.848], // Ma May Street
+    voucher: { title: 'Free Herbal Tea', description: 'Relax after your treatment with a complimentary pot of herbal tea.', discount: 100 },
+    reviews: [
+      { rating: 5, comment: 'Luxurious spa experience, very relaxing.' },
+      { rating: 4, comment: 'Professional therapists, a bit pricey but worth it.' },
+    ],
+    pricing: 5,
+    menu: [
+      { item: 'Vietnamese Massage', imageUrl: '/assets/images/spa_massage.jpg' },
+      { item: 'Hot Stone Therapy', imageUrl: '/assets/images/hot_stone.jpg' },
+      { item: 'Facial Treatment', imageUrl: '/assets/images/facial.jpg' },
+    ],
+  },
+];

@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import MapContainer from '../components/map/MapContainer';
-import { MOCK_POIs } from '../data/pois';
+import { MOCK_POIs } from '../data/mockPoisData';
 import { MOCK_CHALLENGES } from '../data/challenges';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import type { PointOfInterest } from '../types';
@@ -83,7 +83,7 @@ const InteractiveMap = () => {
       />
 
       {/* Container for the Leaflet map */}
-      <div className="h-[55vh] w-full rounded-xl shadow-lg overflow-hidden mt-6">
+      <div className="h-[55vh] w-full rounded-xl shadow-lg overflow-hidden mt-6 relative z-0">
         <MapContainer
           center={mapCenter} // Passes the current map center (user location or default)
           pointsOfInterest={filteredPOIs} // Passes the dynamically filtered POIs

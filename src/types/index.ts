@@ -14,10 +14,21 @@ export interface User {
     name: string;
     category: 'Food' | 'Drink' | 'Service';
     position: [number, number];
+    type: string; // Added type property
     voucher: {
       title: string;
       description: string;
+      discount: number; // Added discount property
     };
+    reviews: {
+      rating: number;
+      comment: string;
+    }[];
+    pricing: number; // 1-5 rating for price
+    menu: {
+      item: string;
+      imageUrl: string;
+    }[];
   }
   
   export interface Suggestion {

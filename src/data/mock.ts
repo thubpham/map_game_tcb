@@ -1,7 +1,7 @@
 // src/data/mock.ts
 
 import { MOCK_USER } from './user';
-import { MOCK_POIs } from './pois';
+import { MOCK_POIs } from './mockPoisData';
 import { MOCK_SUGGESTIONS } from './suggestions';
 import { MOCK_PROMOTIONS } from './promotions';
 import { MOCK_REWARD_TIERS } from './rewardTiers';
