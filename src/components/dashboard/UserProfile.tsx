@@ -20,7 +20,7 @@ const UserProfile = ({ user }: UserProfileProps) => {
       </div>
       <div className="text-center md:text-left">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-800">Welcome back, {user.name}!</h1>
-        <p className="text-lg sm:text-xl text-gray-500 mt-1">You're a <span className="font-semibold text-indigo-600">{user.currentTier}</span> member.</p>
+        <p className="text-lg sm:text-xl text-gray-500 mt-1">You're in <span className="font-semibold text-indigo-600">{user.currentTier}</span> rank.</p>
       </div>
     </div>
   );

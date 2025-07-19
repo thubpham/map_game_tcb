@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import UserProfile from '../components/dashboard/UserProfile';
 import ProgressTracker from '../components/dashboard/ProgressTracker';
-import RewardScheme from '../components/dashboard/RewardScheme';
 import SuggestionCarousel from '../components/dashboard/SuggestionCarousel';
 import Promotions from '../components/dashboard/Promotions';
 import RecentActivity from '../components/dashboard/RecentActivity';
@@ -17,7 +16,6 @@ import type { PointOfInterest } from '../types';
 import { MOCK_USER } from '../data/user';
 import { MOCK_CHALLENGES } from '../data/challenges';
 import { MOCK_PROMOTIONS } from '../data/promotions';
-import { MOCK_REWARD_TIERS } from '../data/rewardTiers';
 import { MOCK_ACTIVITIES } from '../data/activities';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 
@@ -48,7 +46,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-4">
       <UserProfile user={MOCK_USER} />
       <ProgressTracker
         currentPoints={MOCK_USER.points}
@@ -65,7 +63,6 @@ const Dashboard = () => {
         </div>
         <div className="lg:col-span-1 space-y-8">
             <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} onSelectFriend={handleSelectFriend} />
-            <RewardScheme tiers={MOCK_REWARD_TIERS} currentTier={MOCK_USER.currentTier} />
         </div>
       </div>
 
