@@ -10,11 +10,15 @@ import { useGeolocation } from '../hook/useGeolocation';
 import ChallengeSection from '../components/map/ChallengeSection';
 import FriendActivityFeed from '../components/map/FriendActivityFeed';
 import { useChallengeStore } from '../store/challengeStore'; // Import the store
+import Slideover from '../components/common/Slideover';
+import FriendProfile from './FriendProfile';
 
 type Category = PointOfInterest['category'];
 
 const InteractiveMap = () => {
   const [mapCenter, setMapCenter] = useState<[number, number]>([21.0283334, 105.8540410]); // Default center set to Hanoi, Vietnam
+  const [isFriendSlideoverOpen, setIsFriendSlideoverOpen] = useState(false);
+  const [selectedFriendId, setSelectedFriendId] = useState<string | null>(null);
 
   const { isLoading, position, getPosition } = useGeolocation();
   const { activeChallengeId, setActiveChallenge } = useChallengeStore(); // Get activeChallengeId from store
@@ -34,6 +38,16 @@ const InteractiveMap = () => {
   if (position && (mapCenter[0] !== position[0] || mapCenter[1] !== position[1])) {
     setMapCenter(position);
   }
+
+  const handleSelectFriend = (friendId: string) => {
+    setSelectedFriendId(friendId);
+    setIsFriendSlideoverOpen(true);
+  };
+
+  const handleCloseFriendSlideover = () => {
+    setIsFriendSlideoverOpen(false);
+    setSelectedFriendId(null);
+  };
 
   // Handler for changing the selected challenge category (Layer 1 filter)
   const handleChallengeCategoryChange = (category: Category) => {
@@ -70,7 +84,10 @@ const InteractiveMap = () => {
 
   return (
     <div className="pb-16">
-      <FriendActivityFeed friends={MOCK_FRIENDS_WITH_ACTIVITY} />
+      <FriendActivityFeed
+        friends={MOCK_FRIENDS_WITH_ACTIVITY}
+        onSelectFriend={handleSelectFriend}
+      />
 
       <ChallengeSection
         challenges={MOCK_CHALLENGES}
@@ -90,6 +107,14 @@ const InteractiveMap = () => {
           selectedChallengeId={selectedChallengeId} // Pass selectedChallengeId to MapContainer
         />
       </div>
+
+      <Slideover
+        isOpen={isFriendSlideoverOpen}
+        onClose={handleCloseFriendSlideover}
+        title="Friend Profile"
+      >
+        {selectedFriendId && <FriendProfile friendId={selectedFriendId} />}
+      </Slideover>
     </div>
   );
 };
