@@ -11,7 +11,7 @@ import Leaderboard from '../components/dashboard/Leaderboard';
 import Slideover from '../components/common/Slideover';
 import FriendProfile from './FriendProfile';
 
-import { MOCK_USER, MOCK_SUGGESTIONS, MOCK_PROMOTIONS, MOCK_REWARD_TIERS, MOCK_ACTIVITIES, MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
+import { MOCK_USER, MOCK_CHALLENGES, MOCK_PROMOTIONS, MOCK_REWARD_TIERS, MOCK_ACTIVITIES, MOCK_FRIENDS_WITH_ACTIVITY } from '../data/mock';
 
 const Dashboard = () => {
   const [isSlideoverOpen, setIsSlideoverOpen] = useState(false);
@@ -36,7 +36,7 @@ const Dashboard = () => {
         currentTier={MOCK_USER.currentTier}
         nextTier={MOCK_USER.nextTier}
       />
-      <SuggestionCarousel suggestions={MOCK_SUGGESTIONS} />
+      <SuggestionCarousel challenges={MOCK_CHALLENGES} />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 space-y-8">
             <Promotions promotions={MOCK_PROMOTIONS} />
