@@ -8,8 +8,11 @@ import SuggestionCarousel from '../components/dashboard/SuggestionCarousel';
 import Promotions from '../components/dashboard/Promotions';
 import RecentActivity from '../components/dashboard/RecentActivity';
 import Leaderboard from '../components/dashboard/Leaderboard';
+import WhatToEatToday from '../components/dashboard/WhatToEatToday';
 import Slideover from '../components/common/Slideover';
 import FriendProfile from './FriendProfile';
+import StoreDetailSlideoverContent from '../components/map/StoreDetailSlideoverContent';
+import type { PointOfInterest } from '../types';
 
 import { MOCK_USER } from '../data/user';
 import { MOCK_CHALLENGES } from '../data/challenges';
@@ -19,17 +22,29 @@ import { MOCK_ACTIVITIES } from '../data/activities';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 
 const Dashboard = () => {
-  const [isSlideoverOpen, setIsSlideoverOpen] = useState(false);
+  const [isFriendSlideoverOpen, setIsFriendSlideoverOpen] = useState(false);
   const [selectedFriendId, setSelectedFriendId] = useState<string | null>(null);
+  const [isPoiSlideoverOpen, setIsPoiSlideoverOpen] = useState(false);
+  const [selectedPoi, setSelectedPoi] = useState<PointOfInterest | null>(null);
 
   const handleSelectFriend = (friendId: string) => {
     setSelectedFriendId(friendId);
-    setIsSlideoverOpen(true);
+    setIsFriendSlideoverOpen(true);
   };
 
-  const handleCloseSlideover = () => {
-    setIsSlideoverOpen(false);
+  const handleCloseFriendSlideover = () => {
+    setIsFriendSlideoverOpen(false);
     setSelectedFriendId(null);
+  };
+
+  const handleSelectPoi = (poi: PointOfInterest) => {
+    setSelectedPoi(poi);
+    setIsPoiSlideoverOpen(true);
+  };
+
+  const handleClosePoiSlideover = () => {
+    setIsPoiSlideoverOpen(false);
+    setSelectedPoi(null);
   };
 
   return (
@@ -44,6 +59,7 @@ const Dashboard = () => {
       <SuggestionCarousel challenges={MOCK_CHALLENGES} />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 space-y-8">
+            <WhatToEatToday onSelectPoi={handleSelectPoi} />
             <Promotions promotions={MOCK_PROMOTIONS} />
             <RecentActivity activities={MOCK_ACTIVITIES} />
         </div>
@@ -54,11 +70,19 @@ const Dashboard = () => {
       </div>
 
       <Slideover
-        isOpen={isSlideoverOpen}
-        onClose={handleCloseSlideover}
+        isOpen={isFriendSlideoverOpen}
+        onClose={handleCloseFriendSlideover}
         title="Friend Profile"
       >
         {selectedFriendId && <FriendProfile friendId={selectedFriendId} />}
+      </Slideover>
+
+      <Slideover
+        isOpen={isPoiSlideoverOpen}
+        onClose={handleClosePoiSlideover}
+        title="Store Details"
+      >
+        {selectedPoi && <StoreDetailSlideoverContent poi={selectedPoi} />}
       </Slideover>
     </div>
   );

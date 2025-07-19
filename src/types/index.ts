@@ -29,6 +29,7 @@ export interface User {
       item: string;
       imageUrl: string;
     }[];
+    mainImageUrl: string; // Added for the main picture of the POI
   }
   
   export interface Suggestion {

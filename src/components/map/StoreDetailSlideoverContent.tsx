@@ -8,6 +8,9 @@ interface StoreDetailSlideoverContentProps {
 const StoreDetailSlideoverContent = ({ poi }: StoreDetailSlideoverContentProps) => {
   return (
     <div className="space-y-6 pb-10">
+      {/* Main Image */}
+      <img src={poi.mainImageUrl} alt={poi.name} className="w-full h-48 object-cover rounded-lg shadow-md" />
+
       {/* Promotion Details Section */}
       <section className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-2">Special Promotion!</h2>
@@ -28,6 +31,11 @@ const StoreDetailSlideoverContent = ({ poi }: StoreDetailSlideoverContentProps) 
           {poi.name} is a beloved local spot known for its {poi.type.toLowerCase()} and vibrant atmosphere.
           We pride ourselves on using fresh, high-quality ingredients to create memorable experiences for our customers.
         </p>
+        
+        {/* Pricing */}
+        <div className="text-xl font-semibold text-gray-500 mb-3">
+          <p><span className="font-semibold">Pricing:</span> {'$'.repeat(poi.pricing)}{' '}</p>
+        </div>
 
         {/* Menu Section */}
         <h3 className="text-xl font-semibold text-gray-800 mb-3">Our Menu Highlights</h3>
@@ -54,10 +62,7 @@ const StoreDetailSlideoverContent = ({ poi }: StoreDetailSlideoverContentProps) 
           ))}
         </div>
 
-        {/* Pricing */}
-        <div className="text-gray-700">
-          <p><span className="font-semibold">Pricing:</span> {'$'.repeat(poi.pricing)}{' '}</p>
-        </div>
+        
       </section>
     </div>
   );

@@ -14,7 +14,7 @@ import { useChallengeStore } from '../store/challengeStore'; // Import the store
 type Category = PointOfInterest['category'];
 
 const InteractiveMap = () => {
-  const [mapCenter, setMapCenter] = useState<[number, number]>([51.505, -0.09]); // Default center
+  const [mapCenter, setMapCenter] = useState<[number, number]>([21.0283334, 105.8540410]); // Default center set to Hanoi, Vietnam
 
   const { isLoading, position, getPosition } = useGeolocation();
   const { activeChallengeId, setActiveChallenge } = useChallengeStore(); // Get activeChallengeId from store
@@ -86,7 +86,7 @@ const InteractiveMap = () => {
       <div className="h-[55vh] w-full rounded-xl shadow-lg overflow-hidden mt-6 relative z-0">
         <MapContainer
           center={mapCenter} // Passes the current map center (user location or default)
-          pointsOfInterest={filteredPOIs} // Passes the dynamically filtered POIs
+          pointsOfInterest={filteredPOIs}
           selectedChallengeId={selectedChallengeId} // Pass selectedChallengeId to MapContainer
         />
       </div>

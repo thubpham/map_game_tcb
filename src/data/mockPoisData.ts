@@ -18,6 +18,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Cheese Burger', imageUrl: '/assets/images/burger.jpg' },
       { item: 'Veggie Burger', imageUrl: '/assets/images/burger.jpg' },
     ],
+    mainImageUrl: '/assets/images/burger.jpg',
   },
   {
     id: 'poi-2',
@@ -36,6 +37,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Cappuccino', imageUrl: '/assets/images/coffee.jpg' },
       { item: 'Espresso', imageUrl: '/assets/images/coffee.jpg' },
     ],
+    mainImageUrl: '/assets/images/coffee.jpg',
   },
   {
     id: 'poi-3',
@@ -54,6 +56,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Pepperoni Pizza', imageUrl: '/assets/images/pizza.jpg' },
       { item: 'Vegetable Pizza', imageUrl: '/assets/images/pizza.jpg' },
     ],
+    mainImageUrl: '/assets/images/pizza.jpg',
   },
   {
     id: 'poi-4',
@@ -72,6 +75,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Deep Tissue Massage', imageUrl: '/assets/images/spa.jpg' },
       { item: 'Facial Treatment', imageUrl: '/assets/images/spa.jpg' },
     ],
+    mainImageUrl: '/assets/images/spa.jpg',
   },
   {
     id: 'poi-5',
@@ -90,6 +94,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'California Roll', imageUrl: '/assets/images/sushi.jpg' },
       { item: 'Sashimi Platter', imageUrl: '/assets/images/sushi.jpg' },
     ],
+    mainImageUrl: '/assets/images/sushi.jpg',
   },
   {
     id: 'poi-6',
@@ -108,6 +113,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Udon', imageUrl: '/assets/images/ramen.jpg' },
       { item: 'Pad Thai', imageUrl: '/assets/images/ramen.jpg' },
     ],
+    mainImageUrl: '/assets/images/ramen.jpg',
   },
   {
     id: 'poi-7',
@@ -126,6 +132,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Black Tea', imageUrl: '/assets/images/tea.jpg' },
       { item: 'Herbal Infusion', imageUrl: '/assets/images/tea.jpg' },
     ],
+    mainImageUrl: '/assets/images/tea.jpg',
   },
   {
     id: 'poi-8',
@@ -144,6 +151,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Green Smoothie', imageUrl: '/assets/images/juice.jpg' },
       { item: 'Detox Shot', imageUrl: '/assets/images/juice.jpg' },
     ],
+    mainImageUrl: '/assets/images/juice.jpg',
   },
   {
     id: 'poi-9',
@@ -162,6 +170,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Coloring', imageUrl: '/assets/images/salon.jpg' },
       { item: 'Hair Treatment', imageUrl: '/assets/images/salon.jpg' },
     ],
+    mainImageUrl: '/assets/images/salon.jpg',
   },
   {
     id: 'poi-10',
@@ -180,6 +189,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Dry Cleaning', imageUrl: '/assets/images/laundry.jpg' },
       { item: 'Ironing Service', imageUrl: '/assets/images/laundry.jpg' },
     ],
+    mainImageUrl: '/assets/images/laundry.jpg',
   },
   {
     id: 'poi-11',
@@ -198,6 +208,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Phở Gà', imageUrl: '/assets/images/pho.jpg' },
       { item: 'Quẩy (Fried Dough Sticks)', imageUrl: '/assets/images/quay.jpg' },
     ],
+    mainImageUrl: '/assets/images/pho.jpg',
   },
   {
     id: 'poi-12',
@@ -216,6 +227,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Egg Coffee (Iced)', imageUrl: '/assets/images/egg_coffee.jpg' },
       { item: 'Black Coffee', imageUrl: '/assets/images/coffee.jpg' },
     ],
+    mainImageUrl: '/assets/images/egg_coffee.jpg',
   },
   {
     id: 'poi-13',
@@ -234,6 +246,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Bánh Mì Gà (Chicken)', imageUrl: '/assets/images/banh_mi.jpg' },
       { item: 'Bánh Mì Trứng (Egg)', imageUrl: '/assets/images/banh_mi.jpg' },
     ],
+    mainImageUrl: '/assets/images/banh_mi.jpg',
   },
   {
     id: 'poi-14',
@@ -252,6 +265,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Cocktails', imageUrl: '/assets/images/cocktail.jpg' },
       { item: 'Wine', imageUrl: '/assets/images/wine.jpg' },
     ],
+    mainImageUrl: '/assets/images/beer.jpg',
   },
   {
     id: 'poi-15',
@@ -270,6 +284,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Vietnamese Iced Coffee', imageUrl: '/assets/images/vietnamese_coffee.jpg' },
       { item: 'Smoothies', imageUrl: '/assets/images/smoothie.jpg' },
     ],
+    mainImageUrl: '/assets/images/coconut_coffee.jpg',
   },
   {
     id: 'poi-16',
@@ -288,6 +303,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Nem Rán (Fried Spring Rolls)', imageUrl: '/assets/images/nem_ran.jpg' },
       { item: 'Chè (Sweet Soup)', imageUrl: '/assets/images/che.jpg' },
     ],
+    mainImageUrl: '/assets/images/bun_cha.jpg',
   },
   {
     id: 'poi-17',
@@ -306,6 +322,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Peanuts', imageUrl: '/assets/images/peanuts.jpg' },
       { item: 'Dried Beef', imageUrl: '/assets/images/dried_beef.jpg' },
     ],
+    mainImageUrl: '/assets/images/bia_hoi.jpg',
   },
   {
     id: 'poi-18',
@@ -324,6 +341,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Bún (Vermicelli Noodles)', imageUrl: '/assets/images/bun.jpg' },
       { item: 'Rau Thì Là (Dill)', imageUrl: '/assets/images/dill.jpg' },
     ],
+    mainImageUrl: '/assets/images/cha_ca.jpg',
   },
   {
     id: 'poi-19',
@@ -342,6 +360,7 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Silk Scarves', imageUrl: '/assets/images/silk_scarf.jpg' },
       { item: 'Tailoring Services', imageUrl: '/assets/images/tailoring.jpg' },
     ],
+    mainImageUrl: '/assets/images/ao_dai.jpg',
   },
   {
     id: 'poi-20',
@@ -360,5 +379,6 @@ export const MOCK_POIs: PointOfInterest[] = [
       { item: 'Hot Stone Therapy', imageUrl: '/assets/images/hot_stone.jpg' },
       { item: 'Facial Treatment', imageUrl: '/assets/images/facial.jpg' },
     ],
+    mainImageUrl: '/assets/images/spa_massage.jpg',
   },
 ];
