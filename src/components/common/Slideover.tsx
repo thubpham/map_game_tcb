@@ -15,10 +15,10 @@ const Slideover = ({ isOpen, onClose, title, children }: SlideoverProps) => {
       <Dialog as="div" className="relative z-50" onClose={onClose}>
         <Transition.Child
           as={Fragment}
-          enter="ease-in-out duration-500"
+          enter="ease-in-out duration-700"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in-out duration-500"
+          leave="ease-in-out duration-700"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
@@ -30,14 +30,14 @@ const Slideover = ({ isOpen, onClose, title, children }: SlideoverProps) => {
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
               <Transition.Child
                 as={Fragment}
-                enter="transform transition ease-in-out duration-500 sm:duration-700"
+                enter="transform transition ease-in-out duration-700 sm:duration-1000"
                 enterFrom="translate-x-full"
                 enterTo="translate-x-0"
-                leave="transform transition ease-in-out duration-500 sm:duration-700"
+                leave="transform transition ease-in-out duration-700 sm:duration-1000"
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                <Dialog.Panel className="pointer-events-auto w-screen max-w-2xl">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">

@@ -52,6 +52,9 @@ export interface User {
     poiIds: string[]; // IDs of POIs included in this challenge
     description: string;
     imageUrl: string;
+    points: number;
+    difficulty: 'easy' | 'medium' | 'hard';
+    pois: PointOfInterest[]; // Array of POI objects
   }
 
   // New interfaces for "Connect with your friends!" feature

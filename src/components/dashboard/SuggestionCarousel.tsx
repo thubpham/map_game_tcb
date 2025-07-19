@@ -1,6 +1,8 @@
 import type { Challenge } from '../../types';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import Slideover from '../common/Slideover';
+import ChallengeDetailSlideover from './ChallengeDetailSlideover';
 
 interface SuggestionCarouselProps {
   challenges: Challenge[];
@@ -8,6 +10,8 @@ interface SuggestionCarouselProps {
 
 const SuggestionCarousel = ({ challenges }: SuggestionCarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [isSlideoverOpen, setIsSlideoverOpen] = useState(false);
+  const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
 
   const scroll = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -20,13 +24,27 @@ const SuggestionCarousel = ({ challenges }: SuggestionCarouselProps) => {
     }
   };
 
+  const openSlideover = (challenge: Challenge) => {
+    setSelectedChallenge(challenge);
+    setIsSlideoverOpen(true);
+  };
+
+  const closeSlideover = () => {
+    setIsSlideoverOpen(false);
+    setSelectedChallenge(null);
+  };
+
   return (
     <div>
         <h2 className="text-2xl font-bold text-gray-800 mb-4">What's your next adventure?</h2>
         <div className="relative">
             <div className="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide" ref={carouselRef}>
             {challenges.map((challenge) => (
-                <div key={challenge.id} className="flex-shrink-0 w-80 h-52 relative rounded-xl shadow-lg overflow-hidden cursor-pointer group">
+                <div
+                  key={challenge.id}
+                  className="flex-shrink-0 w-80 h-52 relative rounded-xl shadow-lg overflow-hidden cursor-pointer group"
+                  onClick={() => openSlideover(challenge)}
+                >
                   <img src={challenge.imageUrl} alt={challenge.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 p-4">
@@ -53,6 +71,16 @@ const SuggestionCarousel = ({ challenges }: SuggestionCarouselProps) => {
               <ArrowRight className="text-gray-800 w-6 h-6" />
             </button>
         </div>
+
+        {selectedChallenge && (
+          <Slideover
+            isOpen={isSlideoverOpen}
+            onClose={closeSlideover}
+            title={selectedChallenge.name}
+          >
+            <ChallengeDetailSlideover challenge={selectedChallenge} />
+          </Slideover>
+        )}
     </div>
   );
 };
