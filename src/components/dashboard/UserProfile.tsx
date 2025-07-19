@@ -7,7 +7,7 @@ interface UserProfileProps {
 
 const UserProfile = ({ user }: UserProfileProps) => {
   return (
-    <div className="flex flex-col items-center space-y-4 md:flex-row md:items-start md:space-x-6 md:space-y-0">
+    <div className="flex flex-col items-center space-y-4 pt-2 md:flex-row md:items-start md:space-x-6 md:space-y-0">
       <div className="relative">
         <img
           className="w-24 h-24 rounded-full border-4 border-white shadow-md"

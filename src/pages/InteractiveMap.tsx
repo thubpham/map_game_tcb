@@ -56,12 +56,9 @@ const InteractiveMap = () => {
   }, [selectedChallengeId, selectedChallengeCategory]);
 
   return (
-    // The entire component's JSX is wrapped in a single parent div
-    <div>
-      {/* UPDATED: Using the horizontal FriendActivityFeed component */}
+    <div className="pb-16">
       <FriendActivityFeed friends={MOCK_FRIENDS_WITH_ACTIVITY} />
 
-      {/* The main Challenge Section, which handles category selection and challenge carousel */}
       <ChallengeSection
           challenges={MOCK_CHALLENGES}
           selectedChallengeCategory={selectedChallengeCategory}
@@ -73,7 +70,7 @@ const InteractiveMap = () => {
       />
       
       {/* Container for the Leaflet map */}
-      <div className="h-[65vh] w-full rounded-xl shadow-lg overflow-hidden mt-6">
+      <div className="h-[55vh] w-full rounded-xl shadow-lg overflow-hidden mt-6">
           <MapContainer 
             center={mapCenter} // Passes the current map center (user location or default)
             pointsOfInterest={filteredPOIs} // Passes the dynamically filtered POIs
