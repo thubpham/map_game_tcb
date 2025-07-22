@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import { Award, Trophy, MapPin, Star, MessageSquare, Flame, Check } from 'lucide-react';
 import Card from '../components/common/Card';
-import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
+// import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
+import FoodieProfileChart from '../components/dashboard/FoodieProfileChart';
 import { MOCK_POIs } from '../data/mockPoisData';
 import { MOCK_CHALLENGES } from '../data/challenges';
 
@@ -75,16 +76,21 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
       </div>
 
       {/* Stats Overview */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         <StatCard icon={<Trophy className="w-8 h-8 text-indigo-500" />} label="Challenges Won" value={friend.challengesJoined.length} />
         <StatCard icon={<MapPin className="w-8 h-8 text-rose-500" />} label="Restaurants Visited" value={friend.restaurantsVisited.length} />
         <StatCard icon={<MessageSquare className="w-8 h-8 text-teal-500" />} label="Reviews Written" value={friend.restaurantsVisited.filter(r => r.review).length} />
-        <StatCard icon={<Flame className="w-8 h-8 text-red-500" />} label="Highest Score" value="N/A" />
+        {/* <StatCard icon={<Flame className="w-8 h-8 text-red-500" />} label="Highest Score" value="N/A" /> */}
       </div>
 
-      {/* Flavor Profile */}
+      {/* Flavor Profile
       <Card>
         <FlavorProfileChart metrics={friend.flavorProfile} />
+      </Card> */}
+
+      {/* Foodie Profile */}
+      <Card>
+      <FoodieProfileChart metrics={friend.flavorProfile} layout="vertical" />
       </Card>
       
       {/* Challenge History */}

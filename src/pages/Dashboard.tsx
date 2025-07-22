@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import UserProfile from '../components/dashboard/UserProfile';
-import ProgressTracker from '../components/dashboard/ProgressTracker';
+// import StarbucksProgressTracker from '../components/dashboard/ProgressTracker';
 import SuggestionCarousel from '../components/dashboard/SuggestionCarousel';
 import Promotions from '../components/dashboard/Promotions';
 import RecentActivity from '../components/dashboard/RecentActivity';
@@ -22,6 +22,7 @@ import { MOCK_PROMOTIONS } from '../data/promotions';
 import { MOCK_ACTIVITIES } from '../data/activities';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import { MOCK_FOOD_JOURNAL_METRICS } from '../data/foodJournalMetrics';
+import StarbucksProgressTracker from '../components/dashboard/ProgressTracker';
 
 const Dashboard = () => {
   const [isFriendSlideoverOpen, setIsFriendSlideoverOpen] = useState(false);
@@ -52,11 +53,15 @@ const Dashboard = () => {
   return (
     <div className="space-y-12 pb-8">
       <UserProfile user={MOCK_USER} />
-      <ProgressTracker
+      {/* <ProgressTracker
         currentPoints={MOCK_USER.points}
         pointsToNextTier={MOCK_USER.pointsToNextTier}
         currentTier={MOCK_USER.currentTier}
         nextTier={MOCK_USER.nextTier}
+      /> */}
+      <StarbucksProgressTracker
+        starBalance={MOCK_USER.points}
+        tiers={[500, 1000, 1500, 2000]}
       />
       <SuggestionCarousel challenges={MOCK_CHALLENGES} />
       {/* <FlavorProfileChart metrics={MOCK_FOOD_JOURNAL_METRICS} /> */}

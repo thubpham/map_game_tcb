@@ -10,6 +10,7 @@ import type { CharacterProfile } from '../../types';
 
 interface FoodieProfileChartProps {
   metrics: FoodJournalMetrics;
+  layout?: 'horizontal' | 'vertical';
 }
 
 interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
@@ -44,29 +45,28 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   return null;
 };
 
-const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics }) => {
+const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics, layout = 'horizontal' }) => {
   const data = Object.entries(metrics).map(([key, value]) => ({
     metric: key as FoodJournalMetricType,
     value,
-    // Add the label from config directly to the data for easier access
     label: foodJournalConfig[key as FoodJournalMetricType]?.label || key,
   }));
 
   const characterProfile: CharacterProfile = generateCharacterProfile(metrics);
 
+  const isHorizontal = layout === 'horizontal';
+  const mainContainerClasses = isHorizontal ? "flex flex-wrap lg:flex-nowrap gap-6 w-full" : "flex flex-col gap-6 w-full";
+  const profileBoxClasses = isHorizontal ? "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full flex flex-col lg:flex-row" : "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full flex flex-col";
+  const characterSectionClasses = isHorizontal ? "flex flex-col items-center lg:w-1/3 p-4" : "flex flex-col items-center p-4";
+  const chartSectionClasses = isHorizontal ? "lg:w-2/3 p-4" : "w-full p-4";
+  const suggestionBoxClasses = isHorizontal ? "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full lg:w-2/5" : "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full";
+
   return (
-    // CHAIN_OF_THOUGHTS:
-    // The main container is a flexbox. The user wants to change the width of the chart and the "Suggested for you" box.
-    // Original widths were lg:w-2/3 for the chart and lg:w-1/3 for the suggestion.
-    // To give the suggestion box more space, I will change the proportions.
-    // A 50/50 split (lg:w-1/2 for both) is a good starting point. I'll make the chart slightly larger, so I'll use lg:w-3/5 and lg:w-2/5.
-    // This makes the "Suggested for You" box larger than before, as requested.
-    <div className="flex flex-wrap lg:flex-nowrap gap-6 w-full">
+    <div className={mainContainerClasses}>
       {/* Your Foodie Profile Box */}
-      {/* CHAIN_OF_THOUGHTS: Adjusting width from lg:w-2/3 to lg:w-3/5 */}
-      <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full flex flex-col lg:flex-row">
+      <div className={profileBoxClasses}>
         {/* Left Section: Character Image and Description */}
-        <div className="flex flex-col items-center lg:w-1/3 p-4">
+        <div className={characterSectionClasses}>
           <h2 className="text-2xl font-bold text-gray-800 mb-4 tracking-wide text-center">Your Foodie Profile</h2>
           <img
             src={characterProfile.image}
@@ -78,8 +78,7 @@ const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics }) => {
         </div>
 
         {/* Right Section: Bar Chart */}
-        <div className="lg:w-2/3 p-4">
-          {/* CHAIN_OF_THOUGHTS: Removed the title from here as the main title is sufficient */}
+        <div className={chartSectionClasses}>
           <div className="h-96">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
@@ -126,8 +125,7 @@ const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics }) => {
       </div>
 
       {/* Suggested for You Box */}
-      {/* CHAIN_OF_THOUGHTS: Adjusting width from lg:w-1/3 to lg:w-2/5 to make it larger */}
-      <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full lg:w-2/5">
+      <div className={suggestionBoxClasses}>
         <h2 className="text-2xl font-bold text-gray-800 mb-2 tracking-wide">Suggested for You</h2>
         <div className="flex flex-col items-center mb-4">
           <img
@@ -135,7 +133,7 @@ const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics }) => {
             alt="Suggested for You"
             className="w-9/10 h-auto object-cover rounded-lg mb-2"
           />
-          <h3 className="text-2xl font-semibold text-gray-800 mb-2"> Visa Debit Eco Card</h3>
+          <h3 className="2xl font-semibold text-gray-800 mb-2"> Visa Debit Eco Card</h3>
           <p className="text-gray-600 text-center text-lg mb-4">
             Discover new and exciting food experiences tailored just for you based on your foodie profile.
           </p>

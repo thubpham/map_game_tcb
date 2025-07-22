@@ -105,3 +105,15 @@ export interface User {
     image: string; // URL or path to image
     description: string;
   }
+
+  export interface ProgressTrackerProps {
+    currentPoints: number;
+    pointsToNextTier: number;
+    currentTier: string;
+    nextTier: string;
+  }
+
+  export interface StarbucksProgressTrackerProps {
+    starBalance: number;
+    tiers: number[];
+  }
