@@ -1,6 +1,7 @@
 // src/types/index.ts
 
 export interface User {
+    id:string;
     name: string;
     points: number;
     currentTier: 'Bronze' | 'Silver' | 'Gold';
@@ -13,10 +14,22 @@ export interface User {
     name: string;
     category: 'Food' | 'Drink' | 'Service';
     position: [number, number];
+    type: string; // Added type property
     voucher: {
       title: string;
       description: string;
+      discount: number; // Added discount property
     };
+    reviews: {
+      rating: number;
+      comment: string;
+    }[];
+    pricing: number; // 1-5 rating for price
+    menu: {
+      item: string;
+      imageUrl: string;
+    }[];
+    mainImageUrl: string; // Added for the main picture of the POI
   }
   
   export interface Suggestion {
@@ -51,19 +64,39 @@ export interface User {
     poiIds: string[]; // IDs of POIs included in this challenge
     description: string;
     imageUrl: string;
+    points: number;
+    difficulty: 'easy' | 'medium' | 'hard';
+    pois: PointOfInterest[]; // Array of POI objects
   }
 
-  // New interfaces for "Connect with your friends!" feature
+  export interface Review {
+    rating: number;
+    comment: string;
+  }
+  
+  export interface RestaurantVisit {
+    poiId: string;
+    date: string; // e.g., "2024-07-15"
+    review?: Review;
+  }
+  
+  export interface FoodJournalMetrics {
+    adventurous: number;
+    healthy: number;
+    happy: number;
+    exploratory: number;
+    comfort: number;
+  }
   export interface Friend {
     id: string;
     name: string;
     avatarUrl: string;
     totalPoints: number;
-    recentCompletions: {
-        type: 'challenge' | 'poi';
-        name: string;
-    }[];
-  };
+    challengesJoined: string[]; 
+    restaurantsVisited: RestaurantVisit[];
+    flavorProfile: FoodJournalMetrics; 
+    recentCompletions: { type: string; name: string }[];
+  }
 
   // export type FriendActivityType = 'challenge_completed' | 'weekly_summary';
 
