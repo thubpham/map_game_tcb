@@ -6,7 +6,7 @@ export const foodJournalConfig = {
     label: 'Adventurous',
     Icon: Mountain,
     color: '#F97316', // orange-500
-    description: "You're eager to try new and exciting flavors!",
+    description: "You're eager to try new and exciting flavors from many different cuisines!",
   },
   healthy: {
     label: 'Healthy',
@@ -14,17 +14,17 @@ export const foodJournalConfig = {
     color: '#22C55E', // green-500
     description: 'You prioritize nutritious and wholesome choices.',
   },
-  happy: {
-    label: 'Happy',
+  convenient: {
+    label: 'Convenient',
     Icon: Smile,
     color: '#FACC15', // yellow-400
-    description: 'This food brings a smile to your face.',
+    description: 'You are all about quick grabs!',
   },
-  exploratory: {
-    label: 'Exploratory',
+  happy: {
+    label: 'Happy',
     Icon: Compass,
     color: '#3B82F6', // blue-500
-    description: 'You love discovering new restaurants and cuisines.',
+    description: 'You love snacks that can be shared with friends!',
   },
   comfort: {
     label: 'Comfort',

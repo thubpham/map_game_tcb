@@ -67,6 +67,7 @@ export interface User {
     points: number;
     difficulty: 'easy' | 'medium' | 'hard';
     pois: PointOfInterest[]; // Array of POI objects
+    expiresAt?: string; // Optional expiration date string (ISO 8601 format)
   }
 
   export interface Review {
@@ -83,8 +84,8 @@ export interface User {
   export interface FoodJournalMetrics {
     adventurous: number;
     healthy: number;
+    convenient: number;
     happy: number;
-    exploratory: number;
     comfort: number;
   }
   export interface Friend {
@@ -99,14 +100,8 @@ export interface User {
     mutualFriends: number;
     mutualFriendNames: string[];
   }
-
-  // export type FriendActivityType = 'challenge_completed' | 'weekly_summary';
-
-  // export type FriendActivity = {
-  //   id: string;
-  //   friendId: string;
-  //   timestamp: string;
-  // } & (
-  //     | { type: 'challenge_completed'; targetId: string; }
-  //     | { type: 'weekly_summary'; targetIds: string[]; }
-  // );
+  export interface CharacterProfile {
+    name: string;
+    image: string; // URL or path to image
+    description: string;
+  }

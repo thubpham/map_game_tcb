@@ -27,8 +27,8 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
     flavorProfile: {
         adventurous: 85,
         healthy: 50,
-        happy: 95,
-        exploratory: 90,
+        convenient: 95,
+        happy: 90,
         comfort: 70,
     },
     recentCompletions: [
@@ -59,8 +59,8 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
     flavorProfile: {
         adventurous: 60,
         healthy: 40,
-        happy: 80,
-        exploratory: 55,
+        convenient: 80,
+        happy: 55,
         comfort: 90,
     },
     recentCompletions: [
@@ -95,8 +95,8 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
     flavorProfile: {
         adventurous: 90,
         healthy: 75,
-        happy: 85,
-        exploratory: 80,
+        convenient: 85,
+        happy: 80,
         comfort: 60,
     },
     recentCompletions: [
@@ -126,8 +126,8 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
     flavorProfile: {
         adventurous: 40,
         healthy: 95,
-        happy: 90,
-        exploratory: 30,
+        convenient: 90,
+        happy: 30,
         comfort: 80,
     },
     recentCompletions: [

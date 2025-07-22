@@ -1,8 +1,9 @@
 import type { Challenge } from '../../types';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock } from 'lucide-react';
 import { useRef, useState } from 'react';
 import Slideover from '../common/Slideover';
 import ChallengeDetailSlideover from './ChallengeDetailSlideover';
+import { calculateTimeLeft } from '../../utils/timeUtils';
 
 interface SuggestionCarouselProps {
   challenges: Challenge[];
@@ -50,6 +51,14 @@ const SuggestionCarousel = ({ challenges }: SuggestionCarouselProps) => {
                   <div className="absolute bottom-0 left-0 p-4">
                     <h3 className="text-white text-xl font-bold">{challenge.name}</h3>
                   </div>
+                  {challenge.expiresAt && (
+                    <div className="absolute top-4 left-4 bg-red-600/80 px-3 py-1 rounded-full shadow-lg flex items-center">
+                      <Clock className="w-4 h-4 text-white mr-1" />
+                      <span className="text-white text-xs font-bold uppercase">
+                        {calculateTimeLeft(challenge.expiresAt)}
+                      </span>
+                    </div>
+                  )}
                   <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                     <ArrowRight className="text-white w-5 h-5"/>
                   </div>

@@ -11,6 +11,7 @@ export const MOCK_CHALLENGES: Challenge[] = [
     points: 75,
     difficulty: 'easy',
     pois: [],
+    expiresAt: '2025-08-01T23:59:59Z', // Expires in about a week
   },
   {
     id: 'challenge-2',
@@ -22,6 +23,7 @@ export const MOCK_CHALLENGES: Challenge[] = [
     points: 75,
     difficulty: 'easy',
     pois: [],
+    expiresAt: '2025-08-15T23:59:59Z', // Expires in about 3 weeks
   },
   {
     id: 'challenge-3',
@@ -33,6 +35,7 @@ export const MOCK_CHALLENGES: Challenge[] = [
     points: 150,
     difficulty: 'medium',
     pois: [],
+    expiresAt: '2025-07-25T23:59:59Z', // Expires in a few days
   },
   {
     id: 'challenge-4',
@@ -44,6 +47,7 @@ export const MOCK_CHALLENGES: Challenge[] = [
     points: 100,
     difficulty: 'medium',
     pois: [],
+    expiresAt: '2025-08-08T23:59:59Z', // Expires in about 2 weeks
   },
   {
     id: 'challenge-5',
@@ -55,6 +59,7 @@ export const MOCK_CHALLENGES: Challenge[] = [
     points: 120,
     difficulty: 'medium',
     pois: [],
+    expiresAt: '2025-08-22T23:59:59Z', // Expires in about a month
   },
   {
     id: 'challenge-6',

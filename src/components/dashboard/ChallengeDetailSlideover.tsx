@@ -3,6 +3,7 @@ import { MapPin, Star, Award, Share2, Clock } from 'lucide-react';
 import React from 'react'; // Import React if not already present in the original file
 import { useNavigate } from 'react-router-dom';
 import { useChallengeStore } from '../../store/challengeStore';
+import { calculateTimeLeft } from '../../utils/timeUtils';
 
 // Helper to render stars for difficulty
 const DifficultyStars = ({ difficulty }: { difficulty: 'easy' | 'medium' | 'hard' }) => {
@@ -56,10 +57,14 @@ const ChallengeDetailSlideover: React.FC<ChallengeDetailSlideoverProps> = ({ cha
       </div>
 
       {/* Time Limit / Urgency */}
-      <div className="flex items-center text-gray-600 mb-4 bg-gray-100 p-2 rounded-md">
-        <Clock className="w-4 h-4 text-blue-500 mr-2" />
-        <span className="text-sm font-medium">Time Limit: 3 weeks</span>
-      </div>
+      {mockChallenge.expiresAt && (
+        <div className="flex items-center text-gray-600 mb-4 bg-red-100 p-3 rounded-lg shadow-md animate-pulse-once">
+          <Clock className="w-5 h-5 text-red-600 mr-2 flex-shrink-0" />
+          <span className="text-base font-bold text-red-700">
+            Expires in: {calculateTimeLeft(mockChallenge.expiresAt)}
+          </span>
+        </div>
+      )}
 
       <p className="text-gray-700 leading-relaxed mb-6">{mockChallenge.description}</p>
 
