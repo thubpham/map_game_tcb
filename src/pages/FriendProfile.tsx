@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
-import { Award, Trophy, MapPin, Star, MessageSquare, Flame } from 'lucide-react';
+import { Award, Trophy, MapPin, Star, MessageSquare, Flame, Check } from 'lucide-react';
 import Card from '../components/common/Card';
 import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
 import { MOCK_POIs } from '../data/mockPoisData';
@@ -20,6 +21,11 @@ const StatCard = ({ icon, label, value }: { icon: React.ReactNode, label: string
 
 const FriendProfile = ({ friendId }: FriendProfileProps) => {
   const friend = MOCK_FRIENDS_WITH_ACTIVITY.find(f => f.id === friendId);
+  const [isFollowing, setIsFollowing] = useState(false); // State for follow button
+
+  const handleFollowToggle = () => {
+    setIsFollowing(prev => !prev);
+  };
 
   if (!friend) {
     return (
@@ -49,6 +55,22 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
             <Award className="w-8 h-8" />
             <span className="font-semibold">{friend.totalPoints.toLocaleString()} Points</span>
           </div>
+          <button
+            onClick={handleFollowToggle}
+            className={`mt-4 px-6 py-2 rounded-full text-lg font-semibold transition-colors duration-200 ${
+              isFollowing
+                ? 'bg-green-500 text-white hover:bg-green-600'
+                : 'bg-indigo-600 text-white hover:bg-indigo-700'
+            } flex items-center justify-center`}
+          >
+            {isFollowing ? (
+              <>
+                <Check className="w-5 h-5 mr-2" /> Following
+              </>
+            ) : (
+              'Follow'
+            )}
+          </button>
         </div>
       </div>
 

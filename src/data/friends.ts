@@ -35,6 +35,8 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
       { type: 'challenge', name: 'Authentic Vietnamese Eats' },
       { type: 'poi', name: 'Phở Thìn' },
     ],
+    mutualFriends: 5,
+    mutualFriendNames: ['David', 'Emily', 'Frank', 'Grace', 'Henry'],
   },
   {
     id: 'friend-2',
@@ -65,6 +67,8 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
       { type: 'challenge', name: 'Pizza & Italian Delights' },
       { type: 'poi', name: 'Pizzeria Roma' },
     ],
+    mutualFriends: 3,
+    mutualFriendNames: ['Ivy', 'Jack', 'Karen'],
   },
   {
     id: 'friend-3',
@@ -99,6 +103,8 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
       { type: 'poi', name: 'Sushi Nhan' },
       { type: 'challenge', name: 'Hanoi Burger Blitz' },
     ],
+    mutualFriends: 8,
+    mutualFriendNames: ['Liam', 'Mia', 'Noah', 'Olivia', 'Peter', 'Quinn', 'Rachel', 'Sam'],
   },
   {
     id: 'friend-4',
@@ -128,5 +134,7 @@ export const MOCK_FRIENDS_WITH_ACTIVITY: Friend[] = [
         { type: 'poi', name: 'Juice Bar Express' },
         { type: 'challenge', name: 'Local Services & Tailoring' },
     ],
+    mutualFriends: 2,
+    mutualFriendNames: ['Tom', 'Uma'],
   }
 ];

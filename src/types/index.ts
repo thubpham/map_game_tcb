@@ -95,7 +95,9 @@ export interface User {
     challengesJoined: string[]; 
     restaurantsVisited: RestaurantVisit[];
     flavorProfile: FoodJournalMetrics; 
-    recentCompletions: { type: string; name: string }[];
+    recentCompletions: { type: 'challenge' | 'poi'; name: string }[];
+    mutualFriends: number;
+    mutualFriendNames: string[];
   }
 
   // export type FriendActivityType = 'challenge_completed' | 'weekly_summary';

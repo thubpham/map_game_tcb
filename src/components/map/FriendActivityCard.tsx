@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import type { Friend } from '../../types';
-import { Trophy, MapPin, Award } from 'lucide-react';
+import { Trophy, MapPin, Award, Check } from 'lucide-react';
 
 interface FriendActivityCardProps {
   friend: Friend;
@@ -11,6 +12,12 @@ const iconMap = {
 };
 
 const FriendActivityCard = ({ friend }: FriendActivityCardProps) => {
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const handleFollowToggle = () => {
+    setIsFollowing(prev => !prev);
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-md p-4 border border-gray-100 transition-all hover:shadow-lg w-80 flex-shrink-0">
       {/* Card Header */}
@@ -28,6 +35,34 @@ const FriendActivityCard = ({ friend }: FriendActivityCardProps) => {
             <span className="ml-1">Total Points</span>
           </div>
         </div>
+      </div>
+
+      {/* Mutual Friends */}
+      <div className="mb-4">
+        <p className="text-sm text-gray-600">
+          <span className="font-semibold">{friend.mutualFriends}</span> Mutual Friends
+          {friend.mutualFriendNames.length > 0}
+        </p>
+      </div>
+
+      {/* Follow Button */}
+      <div className="mb-4">
+        <button
+          onClick={handleFollowToggle}
+          className={`w-full py-2 px-4 rounded-md text-lg font-semibold transition-colors duration-200 ${
+            isFollowing
+              ? 'bg-green-500 text-white hover:bg-green-600'
+              : 'bg-indigo-600 text-white hover:bg-indigo-700'
+          } flex items-center justify-center`}
+        >
+          {isFollowing ? (
+            <>
+              <Check className="w-5 h-5 mr-2" /> Following
+            </>
+          ) : (
+            'Follow'
+          )}
+        </button>
       </div>
 
       {/* Recent Completions */}
