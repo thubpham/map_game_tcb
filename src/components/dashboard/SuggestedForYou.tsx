@@ -1,0 +1,26 @@
+import React from 'react';
+import Card from '../common/Card';
+
+const SuggestedForYou: React.FC = () => {
+  return (
+    <Card className="p-3 h-full flex flex-col">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2 tracking-wide">Suggested for You</h2>
+      <div className="flex flex-col items-center justify-center flex-grow mb-4">
+        <img
+          src="https://image.bnews.vn/MediaUpload/Medium/2024/11/04/eco-kv-xanh-sm-final-20241104162117.jpg"
+          alt="Suggested for You"
+          className="w-9/10 h-auto object-cover rounded-lg mb-2"
+        />
+        <h3 className="2xl font-semibold text-gray-800 mb-2"> Visa Debit Eco Card</h3>
+        <p className="text-gray-600 text-center text-lg mb-4">
+          Discover green living with Techcombank now!
+        </p>
+        <button className="mt-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          Discover Now!
+        </button>
+      </div>
+    </Card>
+  );
+};
+
+export default SuggestedForYou;

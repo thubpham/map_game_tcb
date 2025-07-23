@@ -3,7 +3,7 @@ import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import { Award, Trophy, MapPin, Star, MessageSquare, Flame, Check } from 'lucide-react';
 import Card from '../components/common/Card';
 // import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
-import FoodieProfileChart from '../components/dashboard/FoodieProfileChart';
+import FoodieProfileBarChart from '../components/dashboard/FoodieProfileBarChart';
 import { MOCK_POIs } from '../data/mockPoisData';
 import { MOCK_CHALLENGES } from '../data/challenges';
 
@@ -90,7 +90,8 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
 
       {/* Foodie Profile */}
       <Card>
-      <FoodieProfileChart metrics={friend.flavorProfile} layout="vertical" />
+      {/* <FoodieProfileBarChart metrics={friend.flavorProfile} layout="vertical" /> */}
+      <FoodieProfileBarChart metrics={friend.flavorProfile} />
       </Card>
       
       {/* Challenge History */}

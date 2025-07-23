@@ -13,7 +13,11 @@ const CarouselBox = ({ title, description, imageURL, isSelected, onClick }: Caro
     `}
     onClick={onClick}
   >
-    <img src={imageURL} alt={title} className="absolute inset-0 w-full h-full object-cover rounded-lg" />
+    <img 
+      src={imageURL} 
+      alt={title} 
+      className="absolute inset-0 w-full h-full object-cover rounded-lg" 
+    />
     <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex flex-col justify-center items-center text-center text-white">
       <h3 className="text-lg font-bold mb-2">{title}</h3>
       <p className="text-sm">{description}</p>

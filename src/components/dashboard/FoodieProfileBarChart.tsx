@@ -7,10 +7,10 @@ import type { FoodJournalMetricType } from '../../config/foodJournalConfig';
 import type { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent';
 import { generateCharacterProfile } from '../../data/characters';
 import type { CharacterProfile } from '../../types';
+import Card from '../common/Card';
 
-interface FoodieProfileChartProps {
+interface FoodieProfileBarChartProps {
   metrics: FoodJournalMetrics;
-  layout?: 'horizontal' | 'vertical';
 }
 
 interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
@@ -21,7 +21,7 @@ interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   }>;
 }
 
-// Custom Tooltip for Bar Chart - No changes needed here.
+// Custom Tooltip for Bar Chart
 const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     const metricKey = payload[0].payload.metric as FoodJournalMetricType;
@@ -45,7 +45,7 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   return null;
 };
 
-const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics, layout = 'horizontal' }) => {
+const FoodieProfileBarChart: React.FC<FoodieProfileBarChartProps> = ({ metrics }) => {
   const data = Object.entries(metrics).map(([key, value]) => ({
     metric: key as FoodJournalMetricType,
     value,
@@ -54,31 +54,24 @@ const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics, layout
 
   const characterProfile: CharacterProfile = generateCharacterProfile(metrics);
 
-  const isHorizontal = layout === 'horizontal';
-  const mainContainerClasses = isHorizontal ? "flex flex-wrap lg:flex-nowrap gap-6 w-full" : "flex flex-col gap-6 w-full";
-  const profileBoxClasses = isHorizontal ? "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full flex flex-col lg:flex-row" : "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full flex flex-col";
-  const characterSectionClasses = isHorizontal ? "flex flex-col items-center lg:w-1/3 p-4" : "flex flex-col items-center p-4";
-  const chartSectionClasses = isHorizontal ? "lg:w-2/3 p-4" : "w-full p-4";
-  const suggestionBoxClasses = isHorizontal ? "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full lg:w-2/5" : "bg-white border border-gray-200 rounded-2xl shadow-lg p-6 w-full";
-
   return (
-    <div className={mainContainerClasses}>
-      {/* Your Foodie Profile Box */}
-      <div className={profileBoxClasses}>
-        {/* Left Section: Character Image and Description */}
-        <div className={characterSectionClasses}>
+    <Card className="flex flex-row p-3 h-full"> 
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
+
+        {/* Character Profile */}
+        <div className="lg:col-span-1 flex flex-col items-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4 tracking-wide text-center">Your Foodie Profile</h2>
           <img
             src={characterProfile.image}
             alt={characterProfile.name}
             className="w-48 h-48 rounded-full object-cover mb-4"
           />
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">{characterProfile.name}</h3>
-          <p className="text-gray-600 text-center text-base">{characterProfile.description}</p>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2 tracking-wide text-center">{characterProfile.name}</h3>
+          <p className="text-gray-600 text-center text-base tracking-wide text-center">{characterProfile.description}</p>
         </div>
 
-        {/* Right Section: Bar Chart */}
-        <div className={chartSectionClasses}>
+        {/* Bar Chart */}
+        <div className="lg:col-span-2">
           <div className="h-96">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
@@ -123,27 +116,8 @@ const FoodieProfileChart: React.FC<FoodieProfileChartProps> = ({ metrics, layout
           </div>
         </div>
       </div>
-
-      {/* Suggested for You Box */}
-      <div className={suggestionBoxClasses}>
-        <h2 className="text-2xl font-bold text-gray-800 mb-2 tracking-wide">Suggested for You</h2>
-        <div className="flex flex-col items-center mb-4">
-          <img
-            src="https://image.bnews.vn/MediaUpload/Medium/2024/11/04/eco-kv-xanh-sm-final-20241104162117.jpg"
-            alt="Suggested for You"
-            className="w-9/10 h-auto object-cover rounded-lg mb-2"
-          />
-          <h3 className="2xl font-semibold text-gray-800 mb-2"> Visa Debit Eco Card</h3>
-          <p className="text-gray-600 text-center text-lg mb-4">
-            Discover new and exciting food experiences tailored just for you based on your foodie profile.
-          </p>
-          <button className="mt-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-            Discover Now!
-          </button>
-        </div>
-      </div>
-    </div>
+    </Card>
   );
 };
 
-export default FoodieProfileChart;
+export default FoodieProfileBarChart;

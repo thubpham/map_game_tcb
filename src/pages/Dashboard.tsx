@@ -7,15 +7,15 @@ import SuggestionCarousel from '../components/dashboard/SuggestionCarousel';
 import Promotions from '../components/dashboard/Promotions';
 import RecentActivity from '../components/dashboard/RecentActivity';
 import Leaderboard from '../components/dashboard/Leaderboard';
-import WhatToEatToday from '../components/dashboard/WhatToEatToday';
+// import WhatToEatToday from '../components/dashboard/WhatToEatToday';
 import Slideover from '../components/common/Slideover';
 import FriendProfile from './FriendProfile';
 import StoreDetailSlideoverContent from '../components/map/StoreDetailSlideoverContent';
-import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
-import FoodieProfileChart from '../components/dashboard/FoodieProfileChart';
+// import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
+import FoodieProfileBarChart from '../components/dashboard/FoodieProfileBarChart';
+import SuggestedForYou from '../components/dashboard/SuggestedForYou';
 import DietarySuggestion from '../components/dashboard/DietarySuggestion';
 import type { PointOfInterest } from '../types';
-
 import { MOCK_USER } from '../data/user';
 import { MOCK_CHALLENGES } from '../data/challenges';
 import { MOCK_PROMOTIONS } from '../data/promotions';
@@ -51,7 +51,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="space-y-12 pb-8">
+    <div className="space-y-8 pb-8">
       <UserProfile user={MOCK_USER} />
       {/* <ProgressTracker
         currentPoints={MOCK_USER.points}
@@ -64,15 +64,33 @@ const Dashboard = () => {
         tiers={[500, 1000, 1500, 2000]}
       />
       <SuggestionCarousel challenges={MOCK_CHALLENGES} />
+
       {/* <FlavorProfileChart metrics={MOCK_FOOD_JOURNAL_METRICS} /> */}
-      <FoodieProfileChart metrics={MOCK_FOOD_JOURNAL_METRICS} />
 
-      <DietarySuggestion />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {/* First Column: Foodie Profile Bar Chart */}
+        <div className="lg:col-span-2 h-full">
+          <FoodieProfileBarChart metrics={MOCK_FOOD_JOURNAL_METRICS} />
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-        <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} onSelectFriend={handleSelectFriend} />
-        <Promotions promotions={MOCK_PROMOTIONS} />
-        <RecentActivity activities={MOCK_ACTIVITIES} />
+        {/* Second Column: Suggested for You */}
+        <div className="lg:col-span-1 h-full">
+          <SuggestedForYou />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        {/* First Column: Dietary Suggestion */}
+        <div className="lg:col-span-2">
+          <DietarySuggestion />
+        </div>
+
+        {/* Second Column: Promotions, Leaderboard, Recent Activity */}
+        <div className="lg:col-span-1 space-y-8">
+          {/* <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} onSelectFriend={handleSelectFriend} /> */}
+          <Promotions promotions={MOCK_PROMOTIONS} />
+          <RecentActivity activities={MOCK_ACTIVITIES} />
+        </div>
       </div>
 
       <Slideover

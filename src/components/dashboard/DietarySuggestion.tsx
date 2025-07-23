@@ -31,7 +31,7 @@ const DietarySuggestion = () => {
         Your Next Culinary Adventure Awaits!
       </h2>
       <p className="text-lg text-center mb-8 opacity-90">
-        Based on your unique diet and preferences, here are some hand-picked suggestions just for you.
+        Based on your unique diet and preferences, here are some suggestions just for you.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -54,12 +54,6 @@ const DietarySuggestion = () => {
               <p className="text-sm opacity-80">{poi.menu[0].item}</p>
             </div>
           ))}
-      </div>
-
-      <div className="text-center">
-        <button className="bg-white text-purple-800 font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:bg-gray-200 transition-colors transform hover:scale-105">
-          Discover More Personalized Picks!
-        </button>
       </div>
 
       <Slideover
