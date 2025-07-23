@@ -3,6 +3,7 @@ import { MOCK_POIs } from '../../data/mockPoisData';
 import Slideover from '../common/Slideover';
 import StoreDetailSlideoverContent from '../map/StoreDetailSlideoverContent';
 import type { PointOfInterest } from '../../types';
+import SuggestionCarousel from './SuggestionCarousel'; // Import the existing carousel component
 
 const DietarySuggestion = () => {
   const [showSlideover, setShowSlideover] = useState(false);
@@ -31,30 +32,13 @@ const DietarySuggestion = () => {
         Your Next Culinary Adventure Awaits!
       </h2>
       <p className="text-lg text-center mb-8 opacity-90">
-        Based on your unique diet and preferences, here are some suggestions just for you.
+        Based on your Foodie Profile, here are some suggestions just for you!
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {MOCK_POIs.filter(poi => poi.category === 'Food' && poi.menu && poi.menu.length > 0)
-          .slice(0, 3) // Take the first 3 food POIs
-          .map((poi, index) => (
-            <div
-              key={poi.id}
-              className="bg-white bg-opacity-15 backdrop-filter backdrop-blur-sm rounded-xl p-5 flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform duration-200 cursor-pointer"
-              onClick={() => handleOpenSlideover(poi)}
-            >
-              <img
-                src={poi.menu[0].imageUrl} // Use the first menu item's image
-                alt={poi.menu[0].item}
-                className={`w-24 h-24 object-cover rounded-full mb-3 border-4 ${
-                  index === 0 ? 'border-yellow-400' : index === 1 ? 'border-green-400' : 'border-red-400'
-                } shadow-lg`}
-              />
-              <h3 className="text-xl font-bold mb-1">{poi.name}</h3>
-              <p className="text-sm opacity-80">{poi.menu[0].item}</p>
-            </div>
-          ))}
-      </div>
+      <SuggestionCarousel
+        items={MOCK_POIs.filter(poi => poi.category === 'Food' && poi.menu && poi.menu.length > 0).slice(0, 5)}
+        onItemClick={handleOpenSlideover}
+      />
 
       <Slideover
         isOpen={showSlideover}

@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import UserProfile from '../components/dashboard/UserProfile';
 // import StarbucksProgressTracker from '../components/dashboard/ProgressTracker';
-import SuggestionCarousel from '../components/dashboard/SuggestionCarousel';
+// import SuggestionCarousel from '../components/dashboard/SuggestionCarousel'; // This is now a generic carousel
 import Promotions from '../components/dashboard/Promotions';
 import RecentActivity from '../components/dashboard/RecentActivity';
-import Leaderboard from '../components/dashboard/Leaderboard';
+// import Leaderboard from '../components/dashboard/Leaderboard';
 // import WhatToEatToday from '../components/dashboard/WhatToEatToday';
 import Slideover from '../components/common/Slideover';
 import FriendProfile from './FriendProfile';
@@ -17,12 +17,13 @@ import SuggestedForYou from '../components/dashboard/SuggestedForYou';
 import DietarySuggestion from '../components/dashboard/DietarySuggestion';
 import type { PointOfInterest } from '../types';
 import { MOCK_USER } from '../data/user';
-import { MOCK_CHALLENGES } from '../data/challenges';
+// import { MOCK_CHALLENGES } from '../data/challenges';
 import { MOCK_PROMOTIONS } from '../data/promotions';
 import { MOCK_ACTIVITIES } from '../data/activities';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import { MOCK_FOOD_JOURNAL_METRICS } from '../data/foodJournalMetrics';
 import StarbucksProgressTracker from '../components/dashboard/ProgressTracker';
+import Leaderboard from '../components/dashboard/Leaderboard';
 
 const Dashboard = () => {
   const [isFriendSlideoverOpen, setIsFriendSlideoverOpen] = useState(false);
@@ -63,7 +64,7 @@ const Dashboard = () => {
         starBalance={MOCK_USER.points}
         tiers={[500, 1000, 1500, 2000]}
       />
-      <SuggestionCarousel challenges={MOCK_CHALLENGES} />
+      {/* The SuggestionCarousel is now used by DietarySuggestion */}
 
       {/* <FlavorProfileChart metrics={MOCK_FOOD_JOURNAL_METRICS} /> */}
 
@@ -87,8 +88,8 @@ const Dashboard = () => {
 
         {/* Second Column: Promotions, Leaderboard, Recent Activity */}
         <div className="lg:col-span-1 space-y-8">
-          {/* <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} onSelectFriend={handleSelectFriend} /> */}
-          <Promotions promotions={MOCK_PROMOTIONS} />
+          <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} onSelectFriend={handleSelectFriend} />
+          {/* <Promotions promotions={MOCK_PROMOTIONS} /> */}
           <RecentActivity activities={MOCK_ACTIVITIES} />
         </div>
       </div>
