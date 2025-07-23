@@ -106,6 +106,16 @@ export interface User {
     description: string;
   }
 
+  // Might need to change to add background picture
+  export interface CarouselBoxProps {
+    id: string;
+    title: string;
+    description: string;
+    imageURL: string;
+    isSelected?: boolean;
+    onClick?: () => void;
+  }
+
   export interface ProgressTrackerProps {
     currentPoints: number;
     pointsToNextTier: number;
