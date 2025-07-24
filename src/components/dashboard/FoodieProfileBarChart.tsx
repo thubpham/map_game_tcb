@@ -8,10 +8,7 @@ import type { NameType, ValueType } from 'recharts/types/component/DefaultToolti
 import { generateCharacterProfile } from '../../data/characters';
 import type { CharacterProfile } from '../../types';
 import Card from '../common/Card';
-
-interface FoodieProfileBarChartProps {
-  metrics: FoodJournalMetrics;
-}
+import type { FoodieProfileBarChartProps } from '../../types';
 
 interface CustomTooltipProps extends TooltipProps<ValueType, NameType> {
   payload?: Array<{

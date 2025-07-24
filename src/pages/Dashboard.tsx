@@ -13,6 +13,7 @@ import FriendProfile from './FriendProfile';
 import StoreDetailSlideoverContent from '../components/map/StoreDetailSlideoverContent';
 // import FlavorProfileChart from '../components/dashboard/FlavorProfileChart';
 import FoodieProfileBarChart from '../components/dashboard/FoodieProfileBarChart';
+import FoodieProfileRadarChart from '../components/dashboard/FoodieProfileRadarChart';
 import SuggestedForYou from '../components/dashboard/SuggestedForYou';
 import DietarySuggestion from '../components/dashboard/DietarySuggestion';
 import type { PointOfInterest } from '../types';
@@ -71,7 +72,8 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
         {/* First Column: Foodie Profile Bar Chart */}
         <div className="lg:col-span-2 h-full">
-          <FoodieProfileBarChart metrics={MOCK_FOOD_JOURNAL_METRICS} />
+          {/* <FoodieProfileBarChart metrics={MOCK_FOOD_JOURNAL_METRICS} /> */}
+          <FoodieProfileRadarChart metrics={MOCK_FOOD_JOURNAL_METRICS} />
         </div>
 
         {/* Second Column: Suggested for You */}

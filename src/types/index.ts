@@ -127,3 +127,11 @@ export interface User {
     starBalance: number;
     tiers: number[];
   }
+
+  export interface FoodieProfileBarChartProps {
+    metrics: FoodJournalMetrics;
+  }
+
+  // export interface FoodieFriendProfileProps {
+  //   metrics: FoodJournalMetrics;
+  // }

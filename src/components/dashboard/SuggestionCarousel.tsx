@@ -38,7 +38,10 @@ const SuggestionCarousel = ({ items, onItemClick }: SuggestionCarouselProps) => 
               } shadow-lg`}
             />
             <h3 className="text-white text-xl font-bold mb-1">{poi.name}</h3>
-            <p className="text-sm opacity-80 text-white">{poi.menu && poi.menu.length > 0 ? poi.menu[0].item : 'No menu item'}</p>
+            {/* Generate a random match percentage >= 70% */}
+            <p className="text-sm opacity-80 text-white">
+              {Math.floor(Math.random() * 31) + 70}% Match
+            </p>
             {/* <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
               <ArrowRight className="text-white w-5 h-5"/>
             </div> */}

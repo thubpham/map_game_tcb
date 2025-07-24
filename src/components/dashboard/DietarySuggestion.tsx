@@ -36,7 +36,8 @@ const DietarySuggestion = () => {
       </p>
 
       <SuggestionCarousel
-        items={MOCK_POIs.filter(poi => poi.category === 'Food' && poi.menu && poi.menu.length > 0).slice(0, 5)}
+        // items={MOCK_POIs.filter(poi => poi.category === 'Food' && poi.menu && poi.menu.length > 0).slice(0, 5)}
+        items={MOCK_POIs.filter(poi => poi.category === 'Food').slice(0, 5)}
         onItemClick={handleOpenSlideover}
       />
 
