@@ -550,3 +550,16 @@ Feature explanation:
 - You can follow your friends on our product and see what challenges they have completed / what stores they have finished
 - It should appear as a carousel at the top of the Interactive Map
 - You can sample social media apps like Instagram, Beli, or BeReal to see how they are designing the challenges to be interactive, social, and fun.  
+
+# Claude reusable prompts:
+Context: You are an expert in UI/UX and Front-End. You understand all the best design and coding practices. 
+
+Instruction: 
+I need you to look at the UserProfile file. 
+Right now, I think the design for the user profile is ugly. It just looks uneven and out of place.
+Using your own judgement, please change the design so that it is more appealing and user friendly.
+
+Requirements: 
+First, confirm your understanding of the task
+Second, list out all the steps that you will take
+Third, return the updated code with your Chain of Thought

@@ -61,10 +61,10 @@ const Dashboard = () => {
         currentTier={MOCK_USER.currentTier}
         nextTier={MOCK_USER.nextTier}
       /> */}
-      <StarbucksProgressTracker
+      {/* <StarbucksProgressTracker
         starBalance={MOCK_USER.points}
         tiers={[500, 1000, 1500, 2000]}
-      />
+      /> */}
       {/* The SuggestionCarousel is now used by DietarySuggestion */}
 
       {/* <FlavorProfileChart metrics={MOCK_FOOD_JOURNAL_METRICS} /> */}
