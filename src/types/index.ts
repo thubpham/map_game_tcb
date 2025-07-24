@@ -144,3 +144,21 @@ export interface StarbucksProgressTrackerProps {
 export interface FoodieProfileBarChartProps {
   metrics: FoodJournalMetrics;
 }
+
+export interface SlideoverProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}
+
+export interface TodaysPickCardProps {
+  poi: PointOfInterest;
+  onOpenSlideover: (poi: PointOfInterest) => void;
+}
+
+export interface SuggestionCarouselProps {
+  items: PointOfInterest[];
+  onItemClick: (item: PointOfInterest) => void;
+  renderItem: (item: PointOfInterest) => React.ReactNode;
+}

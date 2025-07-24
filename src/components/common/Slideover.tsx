@@ -1,13 +1,7 @@
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { X } from 'lucide-react';
-
-interface SlideoverProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-}
+import type { SlideoverProps } from '../../types';
 
 const Slideover = ({ isOpen, onClose, title, children }: SlideoverProps) => {
   return (
