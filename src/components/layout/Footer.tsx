@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Map, LayoutDashboard, Menu, X } from 'lucide-react';
+import { Map, LayoutDashboard, Menu, X, Medal } from 'lucide-react';
 
 const Footer = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -45,6 +45,14 @@ const Footer = () => {
               <span className="mt-1 text-xs md:text-sm">Dashboard</span>
             </NavLink>
             <NavLink
+              to="/leaderboard"
+              className="flex flex-col items-center text-gray-600 hover:text-indigo-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
+              style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+            >
+              <Medal className="h-6 w-6 md:h-8 md:w-8" />
+              <span className="mt-1 text-xs md:text-sm">Leader Board</span>
+            </NavLink>
+            <NavLink
               to="/map"
               className="flex flex-col items-center text-gray-600 hover:text-indigo-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
@@ -68,6 +76,15 @@ const Footer = () => {
             >
               <LayoutDashboard className="mr-2 h-10 w-10" />
               Dashboard
+            </NavLink>
+            <NavLink
+              to="/leaderboard"
+              className="flex items-center justify-center text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium text-3xl"
+              style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
+              onClick={() => setIsMobileMenuOpen(false)} // Close menu on link click
+            >
+              <Medal className="mr-2 h-10 w-10" />
+              Leader Board
             </NavLink>
             <NavLink
               to="/map"

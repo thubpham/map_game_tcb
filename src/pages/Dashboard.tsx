@@ -83,29 +83,22 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className ="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      <div className ="grid grid-cols-1 lg:grid-cols-1 gap-8 items-stretch">
         {/* On large screens, this becomes a row. By default, items in a flex row will stretch to the same height. */}
 
         {/* First Column: Dietary Suggestion */}
-        <div className ="lg:col-span-2 h-full"> {/* Use width utilities instead of column spans */}
+        <div className ="lg:col-span-1 h-full"> {/* Use width utilities instead of column spans */}
             <DietarySuggestion />
-        </div>
-
-        {/* Second Column: Promotions, Leaderboard, Recent Activity */}
-        <div className ="lg:col-span-1 h-full space-y-8"> {/* Use width utilities */}
-            <Leaderboard currentUser={MOCK_USER} friends={MOCK_FRIENDS_WITH_ACTIVITY} onSelectFriend={handleSelectFriend} />
-            {/* <Promotions promotions={MOCK_PROMOTIONS} /> */}
-            {/* <RecentActivity activities={MOCK_ACTIVITIES} /> */}
         </div>
       </div>
 
-      <div className = "grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      {/* <div className = "grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
         <div className = "lg:col-span-2 h-full">
         </div>
         <div className = "lg:col-span-1 h-full">
           <RecentActivity activities={MOCK_ACTIVITIES} />
         </div>
-      </div>
+      </div> */}
 
       <Slideover
         isOpen={isFriendSlideoverOpen}

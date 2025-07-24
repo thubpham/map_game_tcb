@@ -32,16 +32,9 @@ const Leaderboard = ({ currentUser, friends, onSelectFriend }: LeaderboardProps)
   ];
 
   return (
-    // FIX 1: The Card is forced to fill the full height of the grid cell
-    // and becomes a vertical flex container. This is the key to stretching
-    // the card's background and shadow to the correct height.
     <Card className="h-full flex flex-col">
-      {/* The title remains as is, but as a flex item, it won't grow. */}
       <h2 className="text-xl font-bold text-gray-700 mb-4 flex-shrink-0">Friend Leaderboard</h2>
-
-      {/* FIX 2: This new div wraps the list. It is set to grow and fill all
-          available vertical space and enables vertical scrolling only when
-          the content overflows. */}
+      
       <div className="flex-grow overflow-y-auto">
         <ul className="space-y-3">
           {rankedList.map((player, index) => {
@@ -61,7 +54,6 @@ const Leaderboard = ({ currentUser, friends, onSelectFriend }: LeaderboardProps)
                     {rank <= 3 ? rankIcons[index] : rank}
                   </span>
                   <img src={player.avatarUrl} alt={player.name} className="w-10 h-10 rounded-full mx-3 flex-shrink-0" />
-                  {/* Added truncate to prevent long names from breaking the layout */}
                   <span className="font-semibold text-gray-800 flex-grow truncate pr-2">
                     {player.name} {isCurrentUser && '(You)'}
                   </span>

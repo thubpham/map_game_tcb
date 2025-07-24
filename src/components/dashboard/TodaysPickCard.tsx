@@ -1,6 +1,7 @@
 // src/components/dashboard/TodaysPickCard.tsx
 
 import { Clock, MapPin, Star, Bookmark, Eye } from 'lucide-react';
+import Card from '../common/Card';
 import type { PointOfInterest } from '../../types';
 
 interface TodaysPickCardProps {
@@ -10,7 +11,7 @@ interface TodaysPickCardProps {
 
 const TodaysPickCard = ({ poi, onOpenSlideover }: TodaysPickCardProps) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 transition-shadow duration-300 flex-shrink-0 w-80">
+    <Card className="transition-shadow duration-300 flex-shrink-0 w-80">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold text-gray-900 flex items-center">
           <Star className="w-5 h-5 text-yellow-500 mr-2" />
@@ -65,7 +66,7 @@ const TodaysPickCard = ({ poi, onOpenSlideover }: TodaysPickCardProps) => {
           </button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
