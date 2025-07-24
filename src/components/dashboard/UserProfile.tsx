@@ -1,9 +1,16 @@
+import { useState } from 'react'; 
 import type { UserProfileProps } from '../../types';
 import { MOCK_BOOSTER } from '../../data/boosters';
-import { Award, Star, TrendingUp, Zap, CreditCard, Smartphone, PiggyBank, Info } from 'lucide-react';
+import { TECHCOMBANK_SERVICES } from '../../data/techcombankServices';
+import { Award, Star, TrendingUp, Zap, Info, X, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 
 const UserProfile = ({ user }: UserProfileProps) => {
+
+  // State management for modal and carousel
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+
   // Calculate progress percentage to next tier
   const progressPercentage = (user.points / user.pointsToNextTier) * 100;
 
@@ -42,6 +49,29 @@ const UserProfile = ({ user }: UserProfileProps) => {
 
   const tierColors = getTierColors(user.currentTier);
 
+  // Carousel navigation functions
+  const goToNextService = () => {
+    setCurrentServiceIndex((prev) => 
+      prev === TECHCOMBANK_SERVICES.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const goToPrevService = () => {
+    setCurrentServiceIndex((prev) => 
+      prev === 0 ? TECHCOMBANK_SERVICES.length - 1 : prev - 1
+    );
+  };
+
+  const goToService = (index: number) => {
+    setCurrentServiceIndex(index);
+  };
+
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const currentService = TECHCOMBANK_SERVICES[currentServiceIndex];
+  
   return (
     <div className="relative overflow-hidden">
       {/* Background Pattern */}
@@ -80,9 +110,6 @@ const UserProfile = ({ user }: UserProfileProps) => {
               <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
                 Welcome back, {user.name}!
               </h1>
-              {/* <p className="text-lg text-gray-600 mt-2">
-                Ready for your next food adventure?
-              </p> */}
             </div>
 
             {/* Tier and Points Info */}
@@ -134,7 +161,10 @@ const UserProfile = ({ user }: UserProfileProps) => {
                       <Zap className="w-5 h-5 text-orange-500" />
                       <h3 className="font-semibold text-gray-700">Active Boosters</h3>
                     </div>
-                    <button className="flex items-center space-x-1 text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-200 font-medium">
+                    <button 
+                      onClick={openModal}
+                      className="flex items-center space-x-1 text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-200 font-medium hover:bg-indigo-50 px-2 py-1 rounded-lg"
+                    >
                       <Info className="w-4 h-4" />
                       <span>Details</span>
                     </button>
@@ -175,6 +205,130 @@ const UserProfile = ({ user }: UserProfileProps) => {
       {/* Decorative Elements */}
       <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-indigo-200/30 to-purple-200/30 rounded-full blur-xl"></div>
       <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-br from-pink-200/30 to-orange-200/30 rounded-full blur-xl"></div>
+
+      {/* Modal for Techcombank Services */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={closeModal}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold">Unlock More Boosters</h2>
+                  <p className="text-indigo-100 mt-1">Discover Techcombank services that supercharge your rewards</p>
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors duration-200"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+
+            {/* Carousel Container */}
+            <div className="p-6">
+              <div className="relative">
+                {/* Main Service Card */}
+                <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 p-8 min-h-[400px]">
+                  <div className="flex flex-col h-full">
+                    {/* Service Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center space-x-4">
+                        <div className={`p-4 bg-gradient-to-r ${currentService.gradient} rounded-2xl text-white shadow-lg`}>
+                          <currentService.icon className="w-8 h-8" />
+                        </div>
+                        <div>
+                          <div className="flex items-center space-x-2">
+                            <h3 className="text-xl font-bold text-gray-800">{currentService.name}</h3>
+                            {currentService.isPopular && (
+                              <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                                Popular
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-gray-600 mt-1">{currentService.description}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Booster Benefit Highlight */}
+                    <div className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-4 mb-6">
+                      <div className="flex items-center space-x-3">
+                        <Zap className="w-6 h-6 text-orange-600" />
+                        <div>
+                          <p className="font-semibold text-gray-800">Reward Booster</p>
+                          <p className="text-orange-600 font-bold text-lg">{currentService.boosterBenefit}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Features List */}
+                    <div className="flex-1 mb-6">
+                      <h4 className="font-semibold text-gray-800 mb-3">Key Features</h4>
+                      <ul className="space-y-2">
+                        {currentService.features.map((feature, index) => (
+                          <li key={index} className="flex items-center space-x-2 text-gray-600">
+                            <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* CTA Button */}
+                    <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
+                      <span>Learn More & Activate</span>
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Navigation Arrows */}
+                <button
+                  onClick={goToPrevService}
+                  className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200 border border-gray-200"
+                >
+                  <ChevronLeft className="w-6 h-6 text-gray-600" />
+                </button>
+                <button
+                  onClick={goToNextService}
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200 border border-gray-200"
+                >
+                  <ChevronRight className="w-6 h-6 text-gray-600" />
+                </button>
+              </div>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {TECHCOMBANK_SERVICES.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToService(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                      index === currentServiceIndex
+                        ? 'bg-gradient-to-r from-indigo-500 to-purple-500 w-8'
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Service Counter */}
+              <p className="text-center text-gray-500 text-sm mt-4">
+                {currentServiceIndex + 1} of {TECHCOMBANK_SERVICES.length} services
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
