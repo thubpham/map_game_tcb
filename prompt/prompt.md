@@ -377,16 +377,8 @@ export default TodaysPickCard;
 
 ## my instruction
 
-You are expert in frontend development
-a great developer who think deeply and analyze to find and fix all the hardest frontend bug
-
-At the moment, i am encounter a bug in Dashboard page
-in my page, at one div, i put DietarySuggestion and LeaderBoard as 2 component, side by side
-I expect them to have similar vertical height
-
-
-HOWEVER, right now, maybe due to the shadow or the curve or the padding, the leaderboard and each suggestioncard are mis aligned (although inside a same div)
-
-Can you help me on this to match them, i fell so frustruated when seeing 2 mis aligned component
-
-Maybe fix them and let leaderboard to be scrollable, so that it always matching the suggestion card
+Remove: 
+- Recent Friend Activity 
+- Top Performers 
+- Adjust Friend Competition top component to fields already declared in UserProfile
+- Change the design to match DashBoard
