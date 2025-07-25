@@ -54,7 +54,10 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-8 pb-8">
-      <UserProfile user={MOCK_USER} />
+      <div className="mb-8 pt-8">
+        {/* <h2 className="text-2xl pl-4 font-bold text-gray-900 mb-4">Welcome User 1!</h2> */}
+        <UserProfile user={MOCK_USER} />
+      </div>
 
       {/* <ProgressTracker
         currentPoints={MOCK_USER.points}
@@ -88,7 +91,8 @@ const Dashboard = () => {
 
         {/* First Column: Dietary Suggestion */}
         <div className ="lg:col-span-1 h-full"> {/* Use width utilities instead of column spans */}
-            <DietarySuggestion />
+          <h2 className="text-2xl pl-4 font-bold text-gray-900 mb-4">Top Picks Of The Day</h2>
+          <DietarySuggestion />
         </div>
       </div>
 

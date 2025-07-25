@@ -28,7 +28,7 @@ const DietarySuggestion = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-6 items-stretch">
         {/* Today's Pick Carousel */}
         <div className="lg:col-span-3">
           <SuggestionCarousel
