@@ -1,112 +1,17 @@
 import { useState, useMemo } from 'react';
-import { 
-  Trophy, Users, Target, Crown, ChevronRight, UserPlus, Award, 
-  Star, MapPin, Calendar
-} from 'lucide-react';
+import { Trophy, Users, Target, Crown, ChevronRight, UserPlus, Award, MapPin, Quote } from 'lucide-react';
 import Card from '../components/common/Card';
-
-// Using the actual mock data structure from your files
-const MOCK_USER = {
-  id: 'user-barbie',
-  name: 'Barbie',
-  points: 1500,
-  currentTier: 'Bronze',
-  nextTier: 'Gold',
-  pointsToNextTier: 2000,
-};
-
-const MOCK_FRIENDS_WITH_ACTIVITY = [
-  {
-    id: 'friend-1',
-    name: 'Alice',
-    avatarUrl: 'https://www.shutterstock.com/image-vector/young-smiling-woman-mia-avatar-600nw-2127358541.jpg',
-    totalPoints: 1250,
-    challengesJoined: ['challenge-3', 'challenge-5'],
-    restaurantsVisited: [
-      {
-        poiId: 'poi-11',
-        date: '2024-07-18',
-        review: { rating: 5, comment: 'Absolutely legendary Phở. The broth was rich and flavorful. A must-visit!' },
-      },
-      {
-        poiId: 'poi-12',
-        date: '2024-07-16', 
-        review: { rating: 5, comment: 'The egg coffee here is a revelation! So creamy and delicious.' },
-      }
-    ],
-    recentCompletions: [
-      { type: 'challenge', name: 'Authentic Vietnamese Eats' },
-      { type: 'poi', name: 'Phở Thìn' },
-    ],
-    mutualFriends: 5,
-    mutualFriendNames: ['David', 'Emily', 'Frank', 'Grace', 'Henry'],
-  },
-  {
-    id: 'friend-2',
-    name: 'Bob',
-    avatarUrl: 'https://www.shutterstock.com/image-vector/young-smiling-man-adam-avatar-600nw-2107967969.jpg',
-    totalPoints: 980,
-    challengesJoined: ['challenge-2', 'challenge-8'],
-    restaurantsVisited: [
-        {
-            poiId: 'poi-3',
-            date: '2024-07-12',
-            review: { rating: 5, comment: 'Best pizza I\'ve had in a long time. Authentic taste and great service.' }
-        }
-    ],
-    recentCompletions: [
-      { type: 'challenge', name: 'Pizza & Italian Delights' },
-      { type: 'poi', name: 'Pizzeria Roma' },
-    ],
-    mutualFriends: 3,
-    mutualFriendNames: ['Ivy', 'Jack', 'Karen'],
-  },
-  {
-    id: 'friend-3',
-    name: 'Charlie',
-    avatarUrl: 'https://img.freepik.com/premium-vector/young-smiling-african-man-avatar-3d-vector-people-character-illustration-cartoon-minimal-style_365941-883.jpg',
-    totalPoints: 2100,
-    challengesJoined: ['challenge-1', 'challenge-4', 'challenge-9'],
-    restaurantsVisited: [
-        {
-            poiId: 'poi-5',
-            date: '2024-07-20',
-            review: { rating: 4, comment: 'Really fresh and high-quality sushi. The sashimi platter was excellent.' }
-        }
-    ],
-    recentCompletions: [
-      { type: 'poi', name: 'Sushi Nhan' },
-      { type: 'challenge', name: 'Hanoi Burger Blitz' },
-    ],
-    mutualFriends: 8,
-    mutualFriendNames: ['Liam', 'Mia', 'Noah', 'Olivia', 'Peter', 'Quinn', 'Rachel', 'Sam'],
-  },
-  {
-    id: 'friend-4',
-    name: 'Diana',
-    avatarUrl: 'https://img.freepik.com/premium-vector/young-smiling-woman-ann-avatar-3d-vector-people-character-illustration-cartoon-minimal-style_365941-738.jpg?semt=ais_hybrid&w=740',
-    totalPoints: 1500,
-    challengesJoined: ['challenge-7', 'challenge-10'],
-    restaurantsVisited: [
-        {
-            poiId: 'poi-8',
-            date: '2024-07-19',
-            review: { rating: 5, comment: 'The perfect boost after a workout. Love their green smoothie!' }
-        }
-    ],
-    recentCompletions: [
-        { type: 'poi', name: 'Juice Bar Express' },
-        { type: 'challenge', name: 'Local Services & Tailoring' },
-    ],
-    mutualFriends: 2,
-    mutualFriendNames: ['Tom', 'Uma'],
-  }
-];
+import { MOCK_USER } from '../data/user';
+import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
+import { MOCK_ACTIVITIES } from '../data/activities';
+import RecentActivity from '../components/dashboard/RecentActivity';
+import { MOTIVATIONAL_FOOD_QUOTES } from '../data/motivationalQuotes';
 
 const FriendsCompetitionDashboard = () => {
   const [selectedFriend, setSelectedFriend] = useState(null);
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
-  // Chain of Thought: Create ranking logic using actual data
+  // Create ranking logic using actual data
   const rankedPlayers = useMemo(() => {
     const allPlayers = [
       {
@@ -129,7 +34,7 @@ const FriendsCompetitionDashboard = () => {
     return allPlayers.sort((a, b) => b.totalPoints - a.totalPoints);
   }, []);
 
-  // Chain of Thought: Calculate user's rank and stats
+  // Calculate user's rank and stats
   const userStats = useMemo(() => {
     const userRank = rankedPlayers.findIndex(player => player.isCurrentUser) + 1;
     const totalFriends = MOCK_FRIENDS_WITH_ACTIVITY.length;
@@ -149,7 +54,15 @@ const FriendsCompetitionDashboard = () => {
     console.log('Selected friend:', friend);
   };
 
-  // Chain of Thought: Get rank display icon matching Dashboard style
+  // Handle quote rotation on click
+  const handleQuoteClick = () => {
+    setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % MOTIVATIONAL_FOOD_QUOTES.length);
+  };
+
+  // Get current quote
+  const currentQuote = MOTIVATIONAL_FOOD_QUOTES[currentQuoteIndex];
+
+  // Get rank display icon matching Dashboard style
   const getRankIcon = (rank) => {
     if (rank === 1) return <Crown className="w-5 h-5 text-yellow-500" />;
     if (rank === 2) return <Award className="w-5 h-5 text-gray-400" />;
@@ -159,12 +72,12 @@ const FriendsCompetitionDashboard = () => {
 
   return (
     <div className="space-y-8 pb-8">
-      {/* Chain of Thought: Header matching Dashboard UserProfile style */}
+      {/* Header matching Dashboard UserProfile style */}
       <div className="mb-8 pt-8">
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Friends Competition</h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Friends Competition</h1>
               <p className="text-gray-600">See how you stack up against your friends!</p>
             </div>
             <div className="flex items-center gap-4">
@@ -175,7 +88,7 @@ const FriendsCompetitionDashboard = () => {
             </div>
           </div>
 
-          {/* Chain of Thought: User stats overview using Dashboard card style */}
+          {/* User stats overview using Dashboard card style */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
@@ -212,12 +125,11 @@ const FriendsCompetitionDashboard = () => {
         </div>
       </div>
 
-      {/* Chain of Thought: Two-column layout - Leaderboard and Discover More Friends */}
+      {/* Two-column layout - Leaderboard and Discover More Friends */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
 
-        {/* Chain of Thought: Left column - Leaderboard (takes 2/3 width) */}
-        <Card className="lg:col-span-2 flex flex-row p-3 h-full">
-          {/* <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8"> */}
+        {/* Left column - Leaderboard (takes 2/3 width) */}
+        <Card className="lg:col-span-2 h-full p-3">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Leaderboard</h2>
@@ -230,18 +142,18 @@ const FriendsCompetitionDashboard = () => {
                 <div
                   key={player.id}
                   onClick={() => !player.isCurrentUser && handleSelectFriend(player.id)}
-                  className={`flex items-center gap-4 p-6 rounded-xl transition-all cursor-pointer ${
+                  className={`flex items-center gap-4 rounded-xl transition-all cursor-pointer p-6 ${
                     player.isCurrentUser
                       ? 'bg-blue-50 border-2 border-blue-200'
                       : 'bg-gray-50 hover:bg-gray-100 border border-gray-200'
                   }`}
                 >
-                  {/* Chain of Thought: Rank indicator */}
+                  {/* Rank indicator */}
                   <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-sm">
                     {getRankIcon(index + 1)}
                   </div>
 
-                  {/* Chain of Thought: Avatar */}
+                  {/* Avatar */}
                   <div className="relative">
                     <img 
                       src={player.avatarUrl || `https://i.pravatar.cc/150?u=${player.name}`} 
@@ -255,7 +167,7 @@ const FriendsCompetitionDashboard = () => {
                     )}
                   </div>
 
-                  {/* Chain of Thought: Player info using available data */}
+                  {/* Player info using available data */}
                   <div className="flex-grow">
                     <div className="flex items-center gap-3 mb-1">
                       <span className="text-lg font-semibold text-gray-900">
@@ -294,7 +206,7 @@ const FriendsCompetitionDashboard = () => {
                     </div>
                   </div>
 
-                  {/* Chain of Thought: Points display */}
+                  {/* Points display */}
                   <div className="text-right">
                     <div className="text-xl font-bold text-gray-900">
                       {player.totalPoints.toLocaleString()}
@@ -302,18 +214,14 @@ const FriendsCompetitionDashboard = () => {
                     <div className="text-sm text-gray-500">points</div>
                   </div>
 
-                  {!player.isCurrentUser && (
-                    <ChevronRight className="w-5 h-5 text-gray-400" />
-                  )}
+                  { <ChevronRight className="w-5 h-5 text-gray-400" /> }
                 </div>
               ))}
             </div>
-          {/* </div> */}
         </Card>
 
-        {/* Chain of Thought: Right column - Discover More Friends (takes 1/3 width, top 5 suggestions) */}
-        <Card className="lg:col-span-1 flex flex-row p-3 h-full">
-          {/* <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8"> */}
+        {/* Right column - Discover More Friends (takes 1/3 width, top 5 suggestions) */}
+        <Card className="lg:col-span-1 h-full p-3">
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Discover More Friends</h2>
               <p className="text-gray-600">Connect with more people in your network</p>
@@ -345,13 +253,59 @@ const FriendsCompetitionDashboard = () => {
               ))}
             </div>
 
-            {/* Chain of Thought: View all link */}
+            {/* View all link */}
             <div className="mt-6 pt-4 border-t border-gray-200">
               <button className="w-full text-center text-blue-600 hover:text-blue-700 font-medium text-sm">
                 View All Suggestions
               </button>
             </div>
-          {/* </div> */}
+        </Card>
+      </div>
+
+      {/* User Recent Activity */}
+      <div className = "grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <Card className = "lg:col-span-2 h-full p-3">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Daily Food Inspirations</h2>
+          </div>
+          <div 
+            onClick={handleQuoteClick}
+            className="cursor-pointer p-6 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl border border-orange-100 hover:from-orange-100 hover:to-yellow-100 transition-all duration-300 transform hover:scale-[1.02]"
+          >
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0">
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                  <Quote className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <div className="flex-grow">
+                <blockquote className="text-lg font-medium text-gray-800 mb-3 leading-relaxed">
+                  "{currentQuote.text}"
+                </blockquote>
+                <cite className="text-sm text-orange-600 font-semibold">
+                  — {currentQuote.author}
+                </cite>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-orange-200">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-500">Click for new inspiration</span>
+                <div className="flex gap-1">
+                  {MOTIVATIONAL_FOOD_QUOTES.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        index === currentQuoteIndex ? 'bg-orange-500' : 'bg-orange-200'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Card>
+        <Card className = "lg:col-span-1 h-full p-3">
+            <RecentActivity activities={MOCK_ACTIVITIES} />
         </Card>
       </div>
     </div>

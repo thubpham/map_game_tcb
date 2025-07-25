@@ -8,8 +8,8 @@ interface RecentActivityProps {
 
 const RecentActivity = ({ activities }: RecentActivityProps) => {
   return (
-    <Card className="h-full">
-      <h2 className="text-xl font-bold text-gray-700 mb-4">Your Latest Achievements</h2>
+    <div className="h-full">
+      <h2 className="text-2xl font-bold text-gray-700 mb-4">Your Latest Achievements</h2>
       <ul className="space-y-4">
         {activities.map(activity => (
           <li key={activity.id} className="flex items-center space-x-4">
@@ -27,7 +27,7 @@ const RecentActivity = ({ activities }: RecentActivityProps) => {
           </li>
         ))}
       </ul>
-    </Card>
+    </div>
   );
 };
 
