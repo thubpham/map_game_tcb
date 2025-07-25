@@ -6,8 +6,8 @@ const Footer = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const activeLinkStyle = {
-    color: '#4f46e5', // indigo-600
-    borderBottom: '2px solid #4f46e5',
+    color: '#FFB300', // amber-600
+    borderBottom: '2px solid ##FFB300',
   };
 
   const toggleMobileMenu = () => {
@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-3 rounded-md text-gray-400 hover:text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-3 rounded-md text-gray-400 hover:text-white hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded={isMobileMenuOpen ? 'true' : 'false'}
             >
               <span className="sr-only">Open main menu</span>
@@ -38,7 +38,7 @@ const Footer = () => {
           <nav className="flex space-x-4 md:space-x-8 w-full justify-around md:justify-center">
             <NavLink
               to="/"
-              className="flex flex-col items-center text-gray-600 hover:text-indigo-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
+              className="flex flex-col items-center text-gray-600 hover:text-amber-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
             >
               <LayoutDashboard className="h-6 w-6 md:h-8 md:w-8" />
@@ -46,7 +46,7 @@ const Footer = () => {
             </NavLink>
             <NavLink
               to="/leaderboard"
-              className="flex flex-col items-center text-gray-600 hover:text-indigo-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
+              className="flex flex-col items-center text-gray-600 hover:text-amber-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
             >
               <Medal className="h-6 w-6 md:h-8 md:w-8" />
@@ -54,7 +54,7 @@ const Footer = () => {
             </NavLink>
             <NavLink
               to="/map"
-              className="flex flex-col items-center text-gray-600 hover:text-indigo-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
+              className="flex flex-col items-center text-gray-600 hover:text-amber-600 px-4 py-3 rounded-md text-sm font-medium transition-colors md:text-base"
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
             >
               <Map className="h-6 w-6 md:h-8 md:w-8" />
@@ -70,7 +70,7 @@ const Footer = () => {
           <div className="px-2 pt-2 pb-3 space-y-6 sm:px-3 w-full text-center">
             <NavLink
               to="/"
-              className="flex items-center justify-center text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium text-3xl"
+              className="flex items-center justify-center text-gray-600 hover:text-amber-600 block px-3 py-2 rounded-md text-base font-medium text-3xl"
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
               onClick={() => setIsMobileMenuOpen(false)} // Close menu on link click
             >
@@ -79,7 +79,7 @@ const Footer = () => {
             </NavLink>
             <NavLink
               to="/leaderboard"
-              className="flex items-center justify-center text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium text-3xl"
+              className="flex items-center justify-center text-gray-600 hover:text-amber-600 block px-3 py-2 rounded-md text-base font-medium text-3xl"
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
               onClick={() => setIsMobileMenuOpen(false)} // Close menu on link click
             >
@@ -88,7 +88,7 @@ const Footer = () => {
             </NavLink>
             <NavLink
               to="/map"
-              className="flex items-center justify-center text-gray-600 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium text-3xl"
+              className="flex items-center justify-center text-gray-600 hover:text-amber-600 block px-3 py-2 rounded-md text-base font-medium text-3xl"
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
               onClick={() => setIsMobileMenuOpen(false)} // Close menu on link click
             >

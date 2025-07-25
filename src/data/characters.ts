@@ -20,17 +20,17 @@ const characterProfiles: CharacterProfile[] = [
   },
   {
     name: "The Home Chef",
-    image: 'https://e7.pngegg.com/pngimages/396/737/png-clipart-infj-personality-type-myers-briggs-type-indicator-personality-test-infj-fictional-character-individual.png',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP9tz9tCMkmloAA3MSk44HtSZQXKXYezyn8w&s',
     description: "A home person who loves house-made food and dinners in with friends.",
   },
   {
     name: "The Wellness Advocate",
-    image: 'https://www.16personalities.com/static/images/personality-types/avatars/infj-advocate.png',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQREc0Qg7JHo21eyh7H-wfj6zAiYlqSdagYmA&s',
     description: "A health-conscious person with a love for healthy recipes, fitness routines, and mindfulness practices.",
   },
   {
     name: "The Sweet Tooth",
-    image: 'https://e7.pngegg.com/pngimages/396/737/png-clipart-infj-personality-type-myers-briggs-type-indicator-personality-test-infj-fictional-character-individual.png',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaQo-sWXubhPIxsDIfhJo3lvJb53agjMPnA&s',
     description: "A true sweet tooth who enjoys baking and discovering sweet, new confectioneries.",
   },
 ];
