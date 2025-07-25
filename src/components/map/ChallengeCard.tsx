@@ -15,7 +15,7 @@ const ChallengeCard = ({ challenge, isSelected, onClick }: ChallengeCardProps) =
         className={`
             flex-none w-64 h-36 rounded-lg overflow-hidden relative shadow-md 
             hover:shadow-lg transition-all duration-200 ease-in-out
-            ${isSelected ? 'ring-4 ring-indigo-500 ring-offset-2' : ''}
+            ${isSelected ? 'ring-4 ring-amber-500 ring-offset-2' : ''}
             group cursor-pointer
         `}
         >
@@ -26,9 +26,9 @@ const ChallengeCard = ({ challenge, isSelected, onClick }: ChallengeCardProps) =
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex flex-col justify-end text-left">
             <h3 className="text-white text-lg font-semibold leading-tight">{challenge.name}</h3>
-            <p className="text-indigo-200 text-xs mt-1 truncate">{challenge.description}</p>
+            <p className="text-amber-200 text-xs mt-1 truncate">{challenge.description}</p>
             {challenge.expiresAt && (
-                <div className="flex items-center mt-2 bg-red-600/80 px-2 py-1 rounded-full self-start shadow-lg">
+                <div className="flex items-center mt-2 bg-amber-600/80 px-2 py-1 rounded-full self-start shadow-lg">
                     <Clock className="w-4 h-4 text-white mr-1" />
                     <span className="text-white text-xs font-bold uppercase">
                         {calculateTimeLeft(challenge.expiresAt)}

@@ -25,10 +25,10 @@ const StoreDetailsPopup = ({ poi }: StoreDetailsPopupProps) => {
     <Popup>
       <div className="p-1">
         <h3 className="font-bold text-lg text-gray-800">{poi.name}</h3>
-        <p className="text-sm text-indigo-600 font-semibold my-2">{poi.voucher.title}</p>
+        <p className="text-sm text-amber-600 font-semibold my-2">{poi.voucher.title}</p>
         <p className="text-xs text-gray-600 mb-3">{poi.voucher.description}</p>
         <button
-          className="w-full bg-indigo-600 text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
+          className="w-full bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-amber-700 transition-colors"
           onClick={handleViewDetailsClick}
         >
           View Details

@@ -25,7 +25,7 @@ const PointOfInterestMarker = ({ poi, selectedChallengeId }: PointOfInterestMark
     : false;
 
   const iconHtml = renderToString(
-    <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2 ${isPartOfSelectedChallenge ? 'bg-rose-500 border-rose-700 animate-pulse' : 'bg-indigo-600 border-white'}`}>
+    <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2 ${isPartOfSelectedChallenge ? 'bg-amber-500 border-amber-600 animate-pulse' : 'bg-amber-600 border-white'}`}>
       {categoryIcons[poi.category]}
     </div>
   );

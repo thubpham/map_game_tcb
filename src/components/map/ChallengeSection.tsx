@@ -40,21 +40,20 @@ const ChallengeSection = ({
     <div className="bg-white p-6 rounded-xl shadow-lg mt-8">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-gray-800">Active Challenges</h2>
-        <div className="flex items-center gap-2"> 
+        <div className="flex items-center gap-2 p-3"> 
             {/* "Clear Challenge" button appears only when a specific challenge is selected */}
             {selectedChallengeId && (
             <button
                 onClick={() => onChallengeSelect('')} // Deselects the current challenge
-                className="flex items-center text-red-600 hover:text-red-800 text-sm font-semibold transition-colors"
+                className="flex items-center text-amber-600 hover:text-amber-700 text-sm font-semibold transition-colors"
             >
                 <XCircle className="w-4 h-4 mr-1" /> Clear Challenge
             </button>
             )}
-
             <button 
                 onClick={onCenterMeClick}
                 disabled={isLocating}
-                className="flex items-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg shadow-sm hover:bg-indigo-700 disabled:bg-indigo-300 transition-colors"
+                className="flex items-center px-4 py-2 rounded-xl font-semibold text-white bg-amber-600 rounded-lg shadow-md border-2 border-amber-600 hover:bg-transparent hover:text-amber-600 flex items-center gap-2"
             >
                 {isLocating ? <Loader className="w-4 h-4 mr-2 animate-spin" /> : <LocateFixed className="w-4 h-4 mr-2" />}
                 {isLocating ? 'Locating...' : 'Center Map'}
@@ -74,8 +73,8 @@ const ChallengeSection = ({
             onClick={() => onChallengeCategoryChange(category)}
             className={`flex items-center px-5 py-2 text-base font-semibold rounded-full border-2 transition-colors duration-200 ease-in-out
               ${selectedChallengeCategory === category
-                ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' // Active state styling
-                : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100' // Inactive state styling
+                ? 'bg-amber-600 text-white border-amber-600 shadow-md' // Active state styling
+                : 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100' // Inactive state styling
               }
             `}
           >

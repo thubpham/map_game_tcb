@@ -4,11 +4,11 @@ import { useState, useMemo, useEffect } from 'react';
 import MapContainer from '../components/map/MapContainer';
 import { MOCK_POIs } from '../data/mockPoisData';
 import { MOCK_CHALLENGES } from '../data/challenges';
-import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
+// import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import type { PointOfInterest } from '../types';
 import { useGeolocation } from '../hook/useGeolocation';
 import ChallengeSection from '../components/map/ChallengeSection';
-import FriendActivityFeed from '../components/map/FriendActivityFeed';
+// import FriendActivityFeed from '../components/map/FriendActivityFeed';
 import { useChallengeStore } from '../store/challengeStore'; // Import the store
 import Slideover from '../components/common/Slideover';
 import FriendProfile from './FriendProfile';

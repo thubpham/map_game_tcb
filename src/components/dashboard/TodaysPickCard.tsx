@@ -24,7 +24,7 @@ const TodaysPickCard = ({ poi, onOpenSlideover }: TodaysPickCardProps) => {
           />
           
           {/* Match Percentage - Top Left */}
-          <div className="absolute top-3 left-3 bg-green-100 backdrop-blur-sm px-2 py-1 rounded-lg text-sm font-medium text-green-800">
+          <div className="absolute top-3 left-3 bg-amber-100 backdrop-blur-sm px-2 py-1 rounded-lg text-sm font-medium text-amber-600">
             {(Math.random() * 100).toFixed(0)}% Match
           </div>
           
@@ -34,7 +34,7 @@ const TodaysPickCard = ({ poi, onOpenSlideover }: TodaysPickCardProps) => {
           </div>
         </div>
         
-        <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
+        <h4 className="text-lg font-semibold text-amber-600 mb-2 group-hover:text-amber-500 transition-colors">
           {poi.name}
         </h4>
         

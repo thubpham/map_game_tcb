@@ -35,11 +35,11 @@ const StatCard = ({
     <span className="text-sm font-medium text-gray-500 text-center">{label}</span>
     {trend && trendValue && (
       <div className={`flex items-center space-x-1 text-xs px-2 py-1 rounded-full ${
-        trend === 'up' ? 'bg-green-100 text-green-600' :
-        trend === 'down' ? 'bg-red-100 text-red-600' :
+        trend === 'up' ? 'bg-amber-100 text-amber-600' :
+        trend === 'down' ? 'bg-amber-100 text-amber-600' :
         'bg-gray-100 text-gray-600'
       }`}>
-        <TrendingUp className={`w-3 h-3 ${trend === 'down' ? 'rotate-180' : ''}`} />
+        {/* <TrendingUp className={`w-3 h-3 ${trend === 'down' ? 'rotate-180' : ''}`} /> */}
         <span>{trendValue}</span>
       </div>
     )}
@@ -61,9 +61,9 @@ const ActivityItem = ({
 }) => {
   const getIcon = () => {
     switch (type) {
-      case 'challenge': return <Trophy className="w-5 h-5 text-indigo-500" />;
-      case 'review': return <MessageSquare className="w-5 h-5 text-teal-500" />;
-      case 'visit': return <MapPin className="w-5 h-5 text-rose-500" />;
+      case 'challenge': return <Trophy className="w-5 h-5 text-amber-600" />;
+      case 'review': return <MessageSquare className="w-5 h-5 text-amber-600" />;
+      case 'visit': return <MapPin className="w-5 h-5 text-amber-600" />;
     }
   };
 
@@ -78,7 +78,7 @@ const ActivityItem = ({
         <div className="flex items-center justify-between mt-2">
           <span className="text-xs text-gray-400">{date}</span>
           {points && (
-            <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+            <span className="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-1 rounded-full">
               +{points} pts
             </span>
           )}
@@ -120,7 +120,7 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
   return (
     <div className="space-y-6 p-4 bg-gray-50/30 rounded-2xl max-w-2xl mx-auto">
       {/* Profile Header */}
-      <div className="relative bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-6 text-white overflow-hidden">
+      <div className="relative bg-gradient-to-r from-amber-400 to-amber-600 rounded-xl p-6 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative z-10 flex items-center space-x-6">
           <div className="relative">
@@ -149,7 +149,7 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
             className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
               isFollowing
                 ? 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
-                : 'bg-white text-indigo-600 hover:bg-gray-100'
+                : 'bg-white text-amber-600 hover:bg-gray-100'
             } flex items-center justify-center shadow-lg`}
           >
             {isFollowing ? (
@@ -166,26 +166,26 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
       {/* Enhanced Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard 
-          icon={<Trophy className="w-8 h-8 text-indigo-500" />} 
+          icon={<Trophy className="w-8 h-8 text-amber-600" />} 
           label="Challenges" 
           value={friend.challengesJoined.length}
           trend="up"
           trendValue="+2 this week"
         />
         <StatCard 
-          icon={<MapPin className="w-8 h-8 text-rose-500" />} 
+          icon={<MapPin className="w-8 h-8 text-amber-600" />} 
           label="Places Visited" 
           value={friend.restaurantsVisited.length}
           trend="up"
           trendValue="+1 this week"
         />
         <StatCard 
-          icon={<MessageSquare className="w-8 h-8 text-teal-500" />} 
+          icon={<MessageSquare className="w-8 h-8 text-amber-600" />} 
           label="Reviews" 
           value={reviewsCount}
         />
         <StatCard 
-          icon={<Star className="w-8 h-8 text-amber-500" />} 
+          icon={<Star className="w-8 h-8 text-amber-600" />} 
           label="Avg Rating" 
           value={avgRating > 0 ? avgRating.toFixed(1) : 'N/A'}
         />
@@ -207,7 +207,7 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
             onClick={() => setActiveTab(key as any)}
             className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-medium transition-all ${
               activeTab === key
-                ? 'bg-indigo-100 text-indigo-700'
+                ? 'bg-amber-100 text-amber-600'
                 : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }`}
           >
@@ -223,7 +223,7 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-gray-600" />
+                {/* <Clock className="w-5 h-5 mr-2 text-amber-600" /> */}
                 Recent Activity
               </h3>
               <div className="space-y-3">
@@ -242,7 +242,7 @@ const FriendProfile = ({ friendId }: FriendProfileProps) => {
 
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                <Heart className="w-5 h-5 mr-2 text-red-500" />
+                {/* <Heart className="w-5 h-5 mr-2 text-amber-600" /> */}
                 Favorite Places
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">

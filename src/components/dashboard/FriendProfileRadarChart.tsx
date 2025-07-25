@@ -89,8 +89,8 @@ const FriendProfileRadarChart: React.FC<FriendProfileRadarChartProps> = ({ metri
       {/* Radar Chart */}
       <div className="relative">
         <div className="h-80 flex items-center justify-center">
-          <ResponsiveContainer width="100%" height="100%">
-          <RadarChart
+        <ResponsiveContainer width="100%" height="100%">
+            <RadarChart
               cx="50%"
               cy="50%"
               outerRadius="80%"
@@ -120,26 +120,26 @@ const FriendProfileRadarChart: React.FC<FriendProfileRadarChartProps> = ({ metri
               <Radar
                 name="Metrics"
                 dataKey="value"
-                stroke="#818CF8"
-                fill="#818CF8"
+                stroke="#D97706"
+                fill="#D97706"
                 fillOpacity={0.6}
                 strokeWidth={2}
                 dot={{
                   r: 4,
-                  fill: '#4F46E5',
+                  fill: '#B45309',
                   stroke: '#FFFFFF',
                   strokeWidth: 2,
                 }}
                 activeDot={{
                   r: 6,
-                  fill: '#4338CA',
+                  fill: '#92400E',
                   stroke: '#FFFFFF',
                   strokeWidth: 2,
                 }}
               />
               <Tooltip content={<CustomRadarTooltip />} />
             </RadarChart>
-          </ResponsiveContainer>
+            </ResponsiveContainer>
         </div>
         
         {/* Center label */}
@@ -160,7 +160,7 @@ const FriendProfileRadarChart: React.FC<FriendProfileRadarChartProps> = ({ metri
           const isHighest = entry.value === Math.max(...data.map(d => d.value));
           return (
             <div key={entry.metric} className={`text-center p-2 rounded-lg transition-all ${
-              isHighest ? 'bg-indigo-50 border border-indigo-200' : 'bg-gray-50/50'
+              isHighest ? 'bg-amber-50 border border-amber-200' : 'bg-gray-50/50'
             }`}>
               <div className="flex justify-center mb-2">
                 <config.Icon 
@@ -168,14 +168,14 @@ const FriendProfileRadarChart: React.FC<FriendProfileRadarChartProps> = ({ metri
                   color={isHighest ? '#4F46E5' : config.color}
                 />
               </div>
-              <div className={`text-lg font-bold ${isHighest ? 'text-indigo-600' : 'text-gray-800'}`}>
+              <div className={`text-lg font-bold ${isHighest ? 'text-amber-600' : 'text-gray-800'}`}>
                 {entry.value}
               </div>
               <div className="text-xs text-gray-500 font-medium truncate">
                 {config.label}
               </div>
               {isHighest && (
-                <div className="text-xs text-indigo-600 font-semibold mt-1">
+                <div className="text-xs text-amber-600 font-semibold mt-1">
                   Strongest
                 </div>
               )}

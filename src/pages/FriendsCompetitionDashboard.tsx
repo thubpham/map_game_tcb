@@ -97,8 +97,8 @@ const FriendsCompetitionDashboard = () => {
 
   // Get rank display icon matching Dashboard style
   const getRankIcon = (rank) => {
-    if (rank === 1) return <Crown className="w-5 h-5 text-yellow-500" />;
-    if (rank === 2) return <Award className="w-5 h-5 text-gray-400" />;
+    if (rank === 1) return <Crown className="w-5 h-5 text-amber-600" />;
+    if (rank === 2) return <Award className="w-5 h-5 text-amber-600" />;
     if (rank === 3) return <Award className="w-5 h-5 text-amber-600" />;
     return <span className="text-sm font-semibold text-gray-500">#{rank}</span>;
   };
@@ -114,7 +114,7 @@ const FriendsCompetitionDashboard = () => {
               <p className="text-gray-600">See how you stack up against your friends!</p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors flex items-center gap-2">
+              <button className="px-6 py-3 bg-amber-600 text-white rounded-xl font-semibold shadow-md border-2 border-amber-600 hover:bg-transparent hover:text-amber-600 flex items-center gap-2">
                 <UserPlus className="w-4 h-4" />
                 Invite Friends
               </button>
@@ -125,7 +125,7 @@ const FriendsCompetitionDashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
-                <Trophy className="w-6 h-6 text-yellow-500" />
+                <Trophy className="w-6 h-6 text-amber-600" />
                 <span className="text-sm font-medium text-gray-600">Your Rank</span>
               </div>
               <div className="text-2xl font-bold text-gray-900">#{userStats.rank}</div>
@@ -139,7 +139,7 @@ const FriendsCompetitionDashboard = () => {
 
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
-                <Users className="w-6 h-6 text-blue-500" />
+                <Users className="w-6 h-6 text-amber-600" />
                 <span className="text-sm font-medium text-gray-600">Total Friends</span>
               </div>
               <div className="text-2xl font-bold text-gray-900">{userStats.totalFriends}</div>
@@ -148,7 +148,7 @@ const FriendsCompetitionDashboard = () => {
 
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-2">
-                <Target className="w-6 h-6 text-green-500" />
+                <Target className="w-6 h-6 text-amber-600" />
                 <span className="text-sm font-medium text-gray-600">Your Points</span>
               </div>
               <div className="text-2xl font-bold text-gray-900">{MOCK_USER.points.toLocaleString()}</div>
@@ -177,7 +177,7 @@ const FriendsCompetitionDashboard = () => {
                   onClick={() => !player.isCurrentUser && handleSelectFriend(player.id)}
                   className={`flex items-center gap-4 rounded-xl transition-all cursor-pointer p-6 ${
                     player.isCurrentUser
-                      ? 'bg-blue-50 border-2 border-blue-200'
+                      ? 'bg-amber-50 border-2 border-amber-200'
                       : 'bg-gray-50 hover:bg-gray-100 border border-gray-200'
                   }`}
                 >
@@ -194,7 +194,7 @@ const FriendsCompetitionDashboard = () => {
                       className="w-12 h-12 rounded-full border-2 border-white shadow-sm" 
                     />
                     {index === 0 && (
-                      <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                      <div className="absolute -top-1 -right-1 w-6 h-6 bg-amber-600 rounded-full flex items-center justify-center">
                         <Crown className="w-3 h-3 text-white" />
                       </div>
                     )}
@@ -207,7 +207,7 @@ const FriendsCompetitionDashboard = () => {
                         {player.name}
                       </span>
                       {player.isCurrentUser && (
-                        <span className="px-2 py-1 bg-blue-600 text-white text-xs rounded-full font-semibold">
+                        <span className="px-2 py-1 bg-amber-600 text-white text-xs rounded-full font-semibold">
                           YOU
                         </span>
                       )}
@@ -284,8 +284,8 @@ const FriendsCompetitionDashboard = () => {
                     onClick={() => handleFollowToggle(suggestion.name)}
                     className={`px-3 py-2 rounded-lg transition-colors flex items-center justify-center shadow-lg ${
                       followingUsers.has(suggestion.name)
-                        ? 'bg-transparent border-2 border-blue-600 text-blue-600 text-sm hover:bg-blue-50'
-                        : 'bg-blue-600 text-white text-sm hover:bg-blue-700'
+                        ? 'bg-transparent border-2 border-amber-600 text-amber-600 text-sm hover:bg-amber-50'
+                        : 'bg-amber-600 text-white text-sm hover:bg-amber-700'
                     }`}
                   >
                     {followingUsers.has(suggestion.name) ? (
@@ -303,7 +303,7 @@ const FriendsCompetitionDashboard = () => {
 
             {/* View all link */}
             <div className="mt-6 pt-4 border-t border-gray-200">
-              <button className="w-full text-center text-blue-600 hover:text-blue-700 font-medium text-sm">
+              <button className="w-full text-center text-amber-600 hover:text-amber-700 font-medium text-sm">
                 View All Suggestions
               </button>
             </div>
@@ -321,11 +321,11 @@ const FriendsCompetitionDashboard = () => {
           </div>
           <div 
             onClick={handleQuoteClick}
-            className="cursor-pointer p-6 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl border border-orange-100 hover:from-orange-100 hover:to-yellow-100 transition-all duration-300 transform hover:scale-[1.02]"
+            className="cursor-pointer p-6 bg-gradient-to-br from-amber-100 to-amber-50 rounded-xl border border-amber-100 hover:from-amber-100 hover:to-amber-100 transition-all duration-300 transform hover:scale-[1.02]"
           >
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center">
                   <Quote className="w-6 h-6 text-white" />
                 </div>
               </div>
@@ -333,12 +333,12 @@ const FriendsCompetitionDashboard = () => {
                 <blockquote className="text-lg font-medium text-gray-800 mb-3 leading-relaxed">
                   "{currentQuote.text}"
                 </blockquote>
-                <cite className="text-sm text-orange-600 font-semibold">
+                <cite className="text-sm text-amber-600 font-semibold">
                   — {currentQuote.author}
                 </cite>
               </div>
             </div>
-            <div className="mt-4 pt-4 border-t border-orange-200">
+            <div className="mt-4 pt-4 border-t border-amber-200">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-gray-500">Click for new inspiration</span>
                 <div className="flex gap-1">
@@ -346,7 +346,7 @@ const FriendsCompetitionDashboard = () => {
                     <div
                       key={index}
                       className={`w-2 h-2 rounded-full transition-colors ${
-                        index === currentQuoteIndex ? 'bg-orange-500' : 'bg-orange-200'
+                        index === currentQuoteIndex ? 'bg-amber-500' : 'bg-amber-200'
                       }`}
                     />
                   ))}

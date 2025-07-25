@@ -15,7 +15,7 @@ const SuggestedForYou: React.FC = () => {
         <p className="text-gray-600 text-center text-lg mb-4">
           Discover Green Living With Techcombank!
         </p>
-        <button className="mt-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+        <button className="mt-2 px-6 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md border-2 border-amber-600 hover:bg-transparent hover:text-amber-600 active:bg-transparent active:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-all duration-200">
           Discover Now!
         </button>
       </div>

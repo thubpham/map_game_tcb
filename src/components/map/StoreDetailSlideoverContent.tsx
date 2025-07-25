@@ -12,13 +12,13 @@ const StoreDetailSlideoverContent = ({ poi }: StoreDetailSlideoverContentProps) 
       <img src={poi.mainImageUrl} alt={poi.name} className="w-full h-48 object-cover rounded-lg shadow-md" />
 
       {/* Promotion Details Section */}
-      <section className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-6 rounded-lg shadow-lg">
+      <section className="bg-gradient-to-r from-amber-400 to-amber-600 text-white p-6 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-2">Special Promotion!</h2>
         <h3 className="text-xl font-semibold mb-3">{poi.voucher.title}</h3>
         <p className="text-lg mb-4">{poi.voucher.description}</p>
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium">Expires: {new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString()}</span>
-          <span className="bg-white text-indigo-700 px-3 py-1 rounded-full font-bold">
+          <span className="bg-white text-amber-700 px-3 py-1 rounded-full font-bold">
             Save {poi.voucher.discount}%
           </span>
         </div>
@@ -54,7 +54,7 @@ const StoreDetailSlideoverContent = ({ poi }: StoreDetailSlideoverContentProps) 
           {poi.reviews.map((review, index) => (
             <div key={index} className="border-t border-gray-200 pt-4">
               <div className="flex items-center mb-1">
-                <span className="font-semibold text-indigo-600">Anonymous User</span> {/* Changed to Anonymous User */}
+                <span className="font-semibold text-amber-600">Anonymous User</span> {/* Changed to Anonymous User */}
                 <span className="ml-2 text-yellow-500">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span>
               </div>
               <p className="text-gray-600 text-sm italic">"{review.comment}"</p>

@@ -118,19 +118,19 @@ const FoodieProfileRadarChart: React.FC<FoodieProfileRadarChartProps> = ({ metri
               <Radar
                 name="Metrics"
                 dataKey="value"
-                stroke="#818CF8"
-                fill="#818CF8"
+                stroke="#D97706"
+                fill="#D97706"
                 fillOpacity={0.6}
                 strokeWidth={2}
                 dot={{
                   r: 4,
-                  fill: '#4F46E5',
+                  fill: '#B45309',
                   stroke: '#FFFFFF',
                   strokeWidth: 2,
                 }}
                 activeDot={{
                   r: 6,
-                  fill: '#4338CA',
+                  fill: '#92400E',
                   stroke: '#FFFFFF',
                   strokeWidth: 2,
                 }}

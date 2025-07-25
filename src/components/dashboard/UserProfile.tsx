@@ -147,7 +147,7 @@ const UserProfile = ({ user }: UserProfileProps) => {
                       </div>
                       <button 
                         onClick={openModal}
-                        className="flex items-center space-x-1 text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-200 font-medium hover:bg-indigo-50 px-2 py-1 rounded-lg"
+                        className="flex items-center space-x-1 text-sm text-amber-600 hover:text-amber-700 transition-colors duration-200 font-medium hover:bg-amber-30 px-2 py-1 rounded-lg"
                       >
                         <Info className="w-4 h-4" />
                         <span>Details</span>
