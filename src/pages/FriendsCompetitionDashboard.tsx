@@ -1,15 +1,48 @@
 import { useState, useMemo } from 'react';
-import { Trophy, Users, Target, Crown, ChevronRight, UserPlus, Award, MapPin, Quote } from 'lucide-react';
+import { Trophy, Users, Target, Crown, ChevronRight, UserPlus, Award, MapPin, Quote, Check } from 'lucide-react';
 import Card from '../components/common/Card';
 import { MOCK_USER } from '../data/user';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import { MOCK_ACTIVITIES } from '../data/activities';
 import RecentActivity from '../components/dashboard/RecentActivity';
 import { MOTIVATIONAL_FOOD_QUOTES } from '../data/motivationalQuotes';
+import Slideover from '../components/common/Slideover';
+import FriendProfile from './FriendProfile';
 
 const FriendsCompetitionDashboard = () => {
-  const [selectedFriend, setSelectedFriend] = useState(null);
+  // const [selectedFriend, setSelectedFriend] = useState(null);
+
+  // Setting states to control motivational quotes seleection
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+  // Settings for friends-related components
+  const [isFriendSlideoverOpen, setIsFriendSlideoverOpen] = useState(false);
+  const [selectedFriendId, setSelectedFriendId] = useState<string | null>(null);
+
+  const handleSelectFriend = (friendId: string) => {
+    setSelectedFriendId(friendId);
+    setIsFriendSlideoverOpen(true);
+  };
+
+  const handleCloseFriendSlideover = () => {
+    setIsFriendSlideoverOpen(false);
+    setSelectedFriendId(null);
+  };
+
+  // Setting to track following status
+  const [followingUsers, setFollowingUsers] = useState(new Set());
+
+  const handleFollowToggle = (userName) => {
+    setFollowingUsers(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(userName)) {
+        newSet.delete(userName);
+      } else {
+        newSet.add(userName);
+      }
+      return newSet;
+    });
+  };
 
   // Create ranking logic using actual data
   const rankedPlayers = useMemo(() => {
@@ -48,11 +81,11 @@ const FriendsCompetitionDashboard = () => {
     };
   }, [rankedPlayers]);
 
-  const handleSelectFriend = (friendId) => {
-    const friend = MOCK_FRIENDS_WITH_ACTIVITY.find(f => f.id === friendId);
-    setSelectedFriend(friend);
-    console.log('Selected friend:', friend);
-  };
+  // const handleSelectFriend = (friendId) => {
+  //   const friend = MOCK_FRIENDS_WITH_ACTIVITY.find(f => f.id === friendId);
+  //   setSelectedFriend(friend);
+  //   console.log('Selected friend:', friend);
+  // };
 
   // Handle quote rotation on click
   const handleQuoteClick = () => {
@@ -246,9 +279,24 @@ const FriendsCompetitionDashboard = () => {
                     <div className="text-sm text-gray-600 mb-2">{suggestion.mutualFriends} mutual friends</div>
                     <div className="text-xs text-gray-500">{suggestion.points.toLocaleString()} points</div>
                   </div>
-                  <button className="px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors">
-                    Add
+
+                  <button
+                    onClick={() => handleFollowToggle(suggestion.name)}
+                    className={`px-3 py-2 rounded-lg transition-colors flex items-center justify-center shadow-lg ${
+                      followingUsers.has(suggestion.name)
+                        ? 'bg-transparent border-2 border-blue-600 text-blue-600 text-sm hover:bg-blue-50'
+                        : 'bg-blue-600 text-white text-sm hover:bg-blue-700'
+                    }`}
+                  >
+                    {followingUsers.has(suggestion.name) ? (
+                      <>
+                        <Check className="w-5 h-5 mr-2" />
+                      </>
+                    ) : (
+                      'Follow'
+                    )}
                   </button>
+
                 </div>
               ))}
             </div>
@@ -265,6 +313,9 @@ const FriendsCompetitionDashboard = () => {
       {/* User Recent Activity */}
       <div className = "grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
         <Card className = "lg:col-span-2 h-full p-3">
+            <RecentActivity activities={MOCK_ACTIVITIES} />
+        </Card>
+        <Card className = "lg:col-span-1 h-full p-3">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Daily Food Inspirations</h2>
           </div>
@@ -304,9 +355,14 @@ const FriendsCompetitionDashboard = () => {
             </div>
           </div>
         </Card>
-        <Card className = "lg:col-span-1 h-full p-3">
-            <RecentActivity activities={MOCK_ACTIVITIES} />
-        </Card>
+
+        <Slideover
+          isOpen={isFriendSlideoverOpen}
+          onClose={handleCloseFriendSlideover}
+          title="Friend Profile">
+          {selectedFriendId && <FriendProfile friendId={selectedFriendId} />}
+        </Slideover>
+
       </div>
     </div>
   );

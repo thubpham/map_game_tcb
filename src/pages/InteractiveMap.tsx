@@ -84,10 +84,10 @@ const InteractiveMap = () => {
 
   return (
     <div className="pb-16">
-      <FriendActivityFeed
+      {/* <FriendActivityFeed
         friends={MOCK_FRIENDS_WITH_ACTIVITY}
         onSelectFriend={handleSelectFriend}
-      />
+      /> */}
 
       <ChallengeSection
         challenges={MOCK_CHALLENGES}

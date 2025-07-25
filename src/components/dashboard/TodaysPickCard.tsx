@@ -11,7 +11,7 @@ interface TodaysPickCardProps {
 
 const TodaysPickCard = ({ poi, onOpenSlideover }: TodaysPickCardProps) => {
   return (
-    <Card className="transition-shadow duration-300 flex-shrink-0 w-80 h-full">
+    <Card className="transition-shadow duration-300 flex-shrink-0 w-80 h-full p-3">
       <div 
         className="cursor-pointer group"
         onClick={() => onOpenSlideover(poi)}

@@ -74,7 +74,7 @@ const UserProfile = ({ user }: UserProfileProps) => {
   const currentService = TECHCOMBANK_SERVICES[currentServiceIndex];
   
   return (
-    <Card className="relative flex flex-col h-full overflow-hidden"> 
+    <Card className="relative flex flex-col h-full overflow-hidden p-3"> 
 
     {/* <div className="relative overflow-hidden"> */}
       

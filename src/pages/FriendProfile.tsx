@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { MOCK_FRIENDS_WITH_ACTIVITY } from '../data/friends';
 import { 
-  Award, Trophy, MapPin, Star, MessageSquare, Check, 
-  Calendar, TrendingUp, Users, Heart, Clock, Target
+  Award, Trophy, MapPin, Star, MessageSquare, Check, TrendingUp, Users, Heart, Clock, Target
 } from 'lucide-react';
 
 import Card from '../components/common/Card';

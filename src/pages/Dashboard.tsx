@@ -56,7 +56,7 @@ const Dashboard = () => {
     <div className="space-y-8 pb-8">
       <div className="mb-8 pt-8">
         {/* <h2 className="text-2xl pl-4 font-bold text-gray-900 mb-4">Welcome User 1!</h2> */}
-        <UserProfile user={MOCK_USER} />
+        <UserProfile user={ MOCK_USER } />
       </div>
 
       {/* <ProgressTracker

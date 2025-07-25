@@ -1,10 +1,10 @@
 export const MOTIVATIONAL_FOOD_QUOTES = [
     {
-      text: "Life is too short for bad food. Make every meal an adventure!",
+      text: "Life is too short for bad food. Make every meal a once-in-a-life-time adventure!",
       author: "Food Explorer's Wisdom"
     },
     {
-      text: "The secret ingredient is always love... and a little bit of courage to try new flavors.",
+      text: "The secret ingredient is always love, and the courage to try new flavors.",
       author: "Culinary Adventures"
     },
     {
