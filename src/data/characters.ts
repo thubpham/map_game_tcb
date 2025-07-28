@@ -25,7 +25,7 @@ const characterProfiles: CharacterProfile[] = [
   },
   {
     name: "The Wellness Advocate",
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQREc0Qg7JHo21eyh7H-wfj6zAiYlqSdagYmA&s',
+    image: 'https://www.16personalities.com/static/images/personality-types/avatars/enfj-protagonist.png',
     description: "A health-conscious person with a love for healthy recipes, fitness routines, and mindfulness practices.",
   },
   {

@@ -1,8 +1,9 @@
 import { useState } from 'react'; 
 import type { UserProfileProps } from '../../types';
 import { MOCK_BOOSTER } from '../../data/boosters';
+import { GOLD_TIER_BENEFITS } from '../../data/tierBenefits';
 import { TECHCOMBANK_SERVICES } from '../../data/techcombankServices';
-import { Award, Star, TrendingUp, Zap, Info, X, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Award, Star, Zap, Info, X, ArrowRight, ChevronLeft, ChevronRight, Crown } from 'lucide-react';
 import Card from '../common/Card';
 
 
@@ -11,6 +12,8 @@ const UserProfile = ({ user }: UserProfileProps) => {
   // State management for modal and carousel
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+  const [isServicesModalOpen, setIsServicesModalOpen] = useState(false);
+  const [isTierModalOpen, setIsTierModalOpen] = useState(false);
 
   // Calculate progress percentage to next tier
   const progressPercentage = (user.points / user.pointsToNextTier) * 100;
@@ -70,6 +73,10 @@ const UserProfile = ({ user }: UserProfileProps) => {
   // Modal functions
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const openServicesModal = () => setIsServicesModalOpen(true);
+  const closeServicesModal = () => setIsServicesModalOpen(false);
+  const openTierModal = () => setIsTierModalOpen(true);
+  const closeTierModal = () => setIsTierModalOpen(false);
 
   const currentService = TECHCOMBANK_SERVICES[currentServiceIndex];
   
@@ -131,9 +138,15 @@ const UserProfile = ({ user }: UserProfileProps) => {
                     </div>
                   </div>
                   
-                  {/* Points needed */}
+                  {/* Points needed with clickable tier benefits */}
                   <p className="text-sm text-gray-500 text-center md:text-left">
-                    {user.pointsToNextTier - user.points} more points to reach {user.nextTier}!
+                    {user.pointsToNextTier - user.points} more points to reach {user.nextTier} - {' '}
+                    <button 
+                      onClick={openTierModal}
+                      className="text-amber-600 hover:text-amber-700 underline font-medium transition-colors duration-200"
+                    >
+                      Discover {user.nextTier} tier benefits!
+                    </button>
                   </p>
                 </div>
 
@@ -197,17 +210,16 @@ const UserProfile = ({ user }: UserProfileProps) => {
           {/* Backdrop */}
           <div 
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={closeModal}
-          ></div>
-          
+            onClick={closeModal}>
+          </div>
           {/* Modal Content */}
-          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white">
+            <div className="bg-gradient-to-r from-amber-600 to-amber-800 p-6 text-white">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold">Unlock More Boosters</h2>
-                  <p className="text-indigo-100 mt-1">Discover Techcombank services that supercharge your rewards</p>
+                  <h2 className="text-2xl font-bold">Unlock Powerful Reward Boosters</h2>
+                  <p className="text-amber-100 mt-1">Activate Techcombank services to supercharge your reward journey</p>
                 </div>
                 <button
                   onClick={closeModal}
@@ -222,7 +234,7 @@ const UserProfile = ({ user }: UserProfileProps) => {
             <div className="p-6">
               <div className="relative">
                 {/* Main Service Card */}
-                <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 p-8 min-h-[400px]">
+                <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 p-8 min-h-[500px]">
                   <div className="flex flex-col h-full">
                     {/* Service Header */}
                     <div className="flex items-start justify-between mb-6">
@@ -230,47 +242,64 @@ const UserProfile = ({ user }: UserProfileProps) => {
                         <div className={`p-4 bg-gradient-to-r ${currentService.gradient} rounded-2xl text-white shadow-lg`}>
                           <currentService.icon className="w-8 h-8" />
                         </div>
-                        <div>
-                          <div className="flex items-center space-x-2">
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-2 mb-2">
                             <h3 className="text-xl font-bold text-gray-800">{currentService.name}</h3>
                             {currentService.isPopular && (
-                              <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                              <span className="bg-gradient-to-r from-amber-500 to-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
                                 Popular
                               </span>
                             )}
                           </div>
-                          <p className="text-gray-600 mt-1">{currentService.description}</p>
+                          <p className="text-gray-600 mb-3">{currentService.description}</p>
+                          
+                          {/* Quick Stats */}
+                          <div className="flex gap-4 text-sm">
+                            {currentService.interestRate && (
+                              <div className="bg-amber-50 border border-amber-200 rounded-lg px-3 py-1">
+                                <span className="text-amber-700 font-semibold">{currentService.interestRate}</span>
+                              </div>
+                            )}
+                            {currentService.minAmount && (
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-1">
+                                <span className="text-gray-700">Min: {currentService.minAmount}</span>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
 
                     {/* Booster Benefit Highlight */}
-                    <div className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-4 mb-6">
+                    <div className="bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200 rounded-xl p-4 mb-6">
                       <div className="flex items-center space-x-3">
-                        <Zap className="w-6 h-6 text-orange-600" />
+                        <Zap className="w-6 h-6 text-amber-600" />
                         <div>
-                          <p className="font-semibold text-gray-800">Reward Booster</p>
-                          <p className="text-orange-600 font-bold text-lg">{currentService.boosterBenefit}</p>
+                          <p className="font-semibold text-gray-800">Reward Booster Unlock</p>
+                          <p className="text-amber-700 font-bold text-lg">{currentService.boosterBenefit}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Features List */}
                     <div className="flex-1 mb-6">
-                      <h4 className="font-semibold text-gray-800 mb-3">Key Features</h4>
-                      <ul className="space-y-2">
+                      <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+                        <Award className="w-5 h-5 text-amber-600 mr-2" />
+                        Key Features & Benefits
+                      </h4>
+                      <ul className="space-y-3">
                         {currentService.features.map((feature, index) => (
-                          <li key={index} className="flex items-center space-x-2 text-gray-600">
-                            <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
-                            <span>{feature}</span>
+                          <li key={index} className="flex items-start space-x-3 text-gray-600">
+                            <div className="w-2 h-2 bg-gradient-to-r from-amber-500 to-amber-700 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="leading-relaxed">{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {/* CTA Button */}
-                    <button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
-                      <span>Learn More & Activate</span>
+                    <button className="w-full bg-gradient-to-r from-amber-600 to-amber-800 text-white py-4 px-6 rounded-xl font-semibold hover:from-amber-700 hover:to-amber-900 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
+                      <span>Activate Service & Unlock Booster</span>
                       <ArrowRight className="w-5 h-5" />
                     </button>
                   </div>
@@ -299,7 +328,7 @@ const UserProfile = ({ user }: UserProfileProps) => {
                     onClick={() => goToService(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-200 ${
                       index === currentServiceIndex
-                        ? 'bg-gradient-to-r from-indigo-500 to-purple-500 w-8'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-700 w-8'
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                   />
@@ -307,13 +336,130 @@ const UserProfile = ({ user }: UserProfileProps) => {
               </div>
 
               {/* Service Counter */}
-              {/* <p className="text-center text-gray-500 text-sm mt-4">
-                {currentServiceIndex + 1} of {TECHCOMBANK_SERVICES.length} services
-              </p> */}
+              <p className="text-center text-gray-500 text-sm mt-4">
+                {currentServiceIndex + 1} of {TECHCOMBANK_SERVICES.length} services • Activate any service to earn instant booster rewards
+              </p>
             </div>
           </div>
         </div>
       )}
+
+      {/* Modal for Tier Benefits */}
+      {isTierModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={closeTierModal}
+          ></div>
+          
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-amber-600 to-amber-800 p-6 text-white">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-white/20 rounded-2xl">
+                    <Crown className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <h2 className="text-3xl font-bold">Gold Tier Gaming Perks</h2>
+                    <p className="text-amber-100 mt-1">Unlock exclusive challenges, free rewards, and premium gaming benefits</p>
+                  </div>
+                </div>
+                <button
+                  onClick={closeTierModal}
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors duration-200"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-8 max-h-[70vh] overflow-y-auto">
+              {/* Progress Banner */}
+              <div className="bg-gradient-to-r from-amber-50 to-amber-50 border border-amber-200 rounded-2xl p-6 mb-8">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Your Progress to Gold</h3>
+                    <p className="text-gray-600">
+                      Only <span className="font-bold text-amber-600">{user.pointsToNextTier - user.points} points</span> away from unlocking these amazing benefits!
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-3xl font-bold text-amber-600">{Math.round(progressPercentage)}%</div>
+                    <div className="text-sm text-gray-500">Complete</div>
+                  </div>
+                </div>
+                <div className="mt-4 w-full bg-gray-200 rounded-full h-3">
+                  <div 
+                    className="h-3 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full transition-all duration-1000"
+                    style={{ width: `${Math.min(progressPercentage, 100)}%` }}
+                  ></div>
+                </div>
+              </div>
+
+              {/* Benefits Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {GOLD_TIER_BENEFITS.map((benefit) => {
+                  const IconComponent = benefit.icon;
+                  return (
+                    <div key={benefit.id} className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-200">
+                      <div className="flex items-start space-x-4">
+                        <div className="p-3 bg-gradient-to-r from-amber-400 to-amber-600 rounded-xl text-white flex-shrink-0">
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bold text-gray-800 mb-2">{benefit.title}</h4>
+                          <p className="text-gray-600 text-sm mb-4">{benefit.description}</p>
+                          
+                          {/* Comparison */}
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-gray-500">Current ({user.currentTier}):</span>
+                              <span className="text-gray-600 font-medium">{benefit.currentTierValue}</span>
+                            </div>
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-amber-600 font-semibold">Gold Tier:</span>
+                              <span className="text-amber-700 font-bold">{benefit.goldTierValue}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* CTA Section */}
+              <div className="bg-gradient-to-r from-amber-50 to-amber-50 border border-amber-200 rounded-2xl p-8 text-center">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Ready to Unlock Gold Gaming Perks?</h3>
+                  <p className="text-gray-600">Level up your reward game with exclusive challenges, free orders, and premium benefits!</p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button 
+                    onClick={() => {
+                      closeTierModal();
+                      openServicesModal();
+                    }}
+                    className="bg-gradient-to-r from-amber-500 to-amber-600 text-white py-4 px-8 rounded-xl font-semibold hover:from-amber-600 hover:to-amber-700 transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                  >
+                    <Zap className="w-5 h-5" />
+                    <span>Activate Services & Earn Points</span>
+                  </button>
+                  
+                  <button className="border-2 border-amber-600 text-amber-600 py-4 px-8 rounded-xl font-semibold hover:bg-amber-50 transition-all duration-200 flex items-center justify-center space-x-2">
+                    <Crown className="w-5 h-5" />
+                    <span>View All Gold Perks</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
     {/* </div> */}
     </Card>
   );

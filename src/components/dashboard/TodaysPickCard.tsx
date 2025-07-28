@@ -25,7 +25,7 @@ const TodaysPickCard = ({ poi, onOpenSlideover }: TodaysPickCardProps) => {
           
           {/* Match Percentage - Top Left */}
           <div className="absolute top-3 left-3 bg-amber-100 backdrop-blur-sm px-2 py-1 rounded-lg text-sm font-medium text-amber-600">
-            {(Math.random() * 100).toFixed(0)}% Match
+            {(Math.random() * 30 + 70).toFixed(0)}% Match
           </div>
           
           {/* Price Index - Top Right */}
@@ -41,7 +41,7 @@ const TodaysPickCard = ({ poi, onOpenSlideover }: TodaysPickCardProps) => {
         <div className="space-y-2 text-sm text-gray-600 mb-4">
           <div className="flex items-center">
             <MapPin className="w-4 h-4 mr-2" />
-            <span>{(Math.random() * 10).toFixed(1)}km away</span>
+            <span>{(Math.random() * 0.9 + 0.1).toFixed(1)}km away</span>
           </div>
           <div className="flex items-center">
             <Clock className="w-4 h-4 mr-2" />

@@ -162,3 +162,13 @@ export interface SuggestionCarouselProps {
   onItemClick: (item: PointOfInterest) => void;
   renderItem: (item: PointOfInterest) => React.ReactNode;
 }
+
+export interface TierBenefit {
+  id: string;
+  title: string;
+  description: string;
+  icon: any;
+  currentTierValue: string;
+  goldTierValue: string;
+  isUpgrade: boolean;
+}
