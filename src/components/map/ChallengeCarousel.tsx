@@ -18,7 +18,7 @@ const ChallengeCarousel = ({ challenges, selectedChallengeId, onChallengeSelect 
 
   return (
     <div className="relative">
-      <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 space-x-4 hide-scrollbar">
+      <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 px-2 space-x-4 hide-scrollbar">
         {challenges.map(challenge => (
           <ChallengeCard
             key={challenge.id}
@@ -28,18 +28,17 @@ const ChallengeCarousel = ({ challenges, selectedChallengeId, onChallengeSelect 
           />
         ))}
       </div>
-      {/* Custom scrollbar styling (optional, but good for UX) */}
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
         }
         .hide-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </div>
   );
 };
 
-export default ChallengeCarousel
+export default ChallengeCarousel;

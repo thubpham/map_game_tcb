@@ -116,4 +116,40 @@ export const MOCK_CHALLENGES: Challenge[] = [
     difficulty: 'easy',
     pois: [],
   },
+  {
+    id: 'challenge-10',
+    name: 'Literary Coffee Escape',
+    category: 'Drink',
+    poiIds: ['poi-21'], // Tranquil Books & Coffee
+    description: 'Relax, read, and sip at Hanoi\'s most peaceful book cafe.',
+    imageUrl: 'https://blog.cuteheads.com/wp-content/uploads/2015/04/cute-coffee.jpg',
+    points: 60,
+    difficulty: 'easy',
+    pois: [],
+    expiresAt: '2025-08-12T23:59:59Z',
+  },
+  {
+    id: 'challenge-11',
+    name: 'Hotpot Feast',
+    category: 'Food',
+    poiIds: ['poi-22'], // Lẩu Phan Buffet
+    description: 'Gather your crew and indulge in unlimited hotpot delights.',
+    imageUrl: 'https://publish.purewow.net/wp-content/uploads/sites/2/2023/10/what-is-hot-pot_universal.jpg?resize=720%2C780',
+    points: 90,
+    difficulty: 'medium',
+    pois: [],
+    expiresAt: '2025-08-20T23:59:59Z',
+  },
+  {
+    id: 'challenge-12',
+    name: 'Style & Stitches',
+    category: 'Service',
+    poiIds: ['poi-23', 'poi-19'], // Thắng Tailor & Shoes, Áo Dài Thanh Liem Tailors
+    description: 'Tailor your look with Hanoi\'s best fashion artisans.',
+    imageUrl: 'https://tailorbros.com/wp-content/uploads/2023/04/what-to-get-tailored-in-hanoi.jpeg',
+    points: 110,
+    difficulty: 'medium',
+    pois: [],
+    expiresAt: '2025-08-30T23:59:59Z',
+  },  
 ];

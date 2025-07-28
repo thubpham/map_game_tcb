@@ -15,7 +15,7 @@ const ChallengeCard = ({ challenge, isSelected, onClick }: ChallengeCardProps) =
         className={`
             flex-none w-64 h-36 rounded-lg overflow-hidden relative shadow-md 
             hover:shadow-lg transition-all duration-200 ease-in-out
-            ${isSelected ? 'ring-4 ring-amber-500 ring-offset-2' : ''}
+            ${isSelected ? 'border-4 border-amber-500 box-border' : ''}
             group cursor-pointer
         `}
         >
@@ -40,4 +40,4 @@ const ChallengeCard = ({ challenge, isSelected, onClick }: ChallengeCardProps) =
     );
 };
 
-export default ChallengeCard
+export default ChallengeCard;
