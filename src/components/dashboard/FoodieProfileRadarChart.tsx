@@ -78,7 +78,7 @@ const FoodieProfileRadarChart: React.FC<FoodieProfileRadarChartProps> = ({ metri
           <img
             src={characterProfile.image}
             alt={characterProfile.name}
-            className="w-48 h-48 rounded-full object-cover mb-4"
+            className="w-full h-full rounded-full object-cover mb-4"
           />
           <h3 className="text-xl font-semibold text-gray-800 mb-2 tracking-wide text-center">{characterProfile.name}</h3>
           <p className="text-gray-600 text-center text-base tracking-wide text-center">{characterProfile.description}</p>

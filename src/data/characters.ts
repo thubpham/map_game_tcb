@@ -1,5 +1,11 @@
 import type { FoodJournalMetrics } from '../types'; 
 import type { CharacterProfile } from '../types';
+import natureLover from '../assets/images/nature-lover.png';
+import urbanExplorer from '../assets/images/urban-explorer.png';
+import homeChef from '../assets/images/home-chef.png';
+import wellnessAdvocate from '../assets/images/wellness-advocate.png';
+import sweetTooth from '../assets/images/sweet-tooth.png';
+
 
 // import natureLoverImage from '../assets/images/character-nature-lover.png';
 // import urbanExplorerImage from '../assets/images/character-urban-explorer.png';
@@ -10,27 +16,27 @@ import type { CharacterProfile } from '../types';
 const characterProfiles: CharacterProfile[] = [
   {
     name: "The Nature Lover",
-    image: 'https://www.16personalities.com/static/images/personality-types/avatars/infj-advocate.png',
+    image: natureLover,
     description: "A nature lover who thrives on fresh, natural ingredients and love outdoor activities.",
   },
   {
     name: "The Urban Explorer",
-    image: 'https://www.16personalities.com/static/images/personality-types/avatars/entj-commander.png',
+    image: urbanExplorer,
     description: "A connoisseur of diverse cuisines and culture, loves exploring new, exciting things.",
   },
   {
     name: "The Home Chef",
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP9tz9tCMkmloAA3MSk44HtSZQXKXYezyn8w&s',
+    image: homeChef,
     description: "A home person who loves house-made food and dinners in with friends.",
   },
   {
     name: "The Wellness Advocate",
-    image: 'https://www.16personalities.com/static/images/personality-types/avatars/enfj-protagonist.png',
+    image: wellnessAdvocate,
     description: "A health-conscious person with a love for healthy recipes, fitness routines, and mindfulness practices.",
   },
   {
     name: "The Sweet Tooth",
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHaQo-sWXubhPIxsDIfhJo3lvJb53agjMPnA&s',
+    image: sweetTooth,
     description: "A true sweet tooth who enjoys baking and discovering sweet, new confectioneries.",
   },
 ];
